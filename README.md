@@ -1,6 +1,6 @@
 # Pico Sensor Interface
 
-A Raspberry Pi Pico-based sensor interface project that provides real-time monitoring and control capabilities using Modbus RTU communication protocol. This project is built using PlatformIO and the Arduino framework.
+A Raspberry Pi Pico-based sensor interface project that provides real-time monitoring and data transmission using Modbus RTU communication protocol. This project is built using PlatformIO and the Arduino framework.
 
 ## Features
 
@@ -14,9 +14,10 @@ A Raspberry Pi Pico-based sensor interface project that provides real-time monit
 ## Hardware Requirements
 
 - Raspberry Pi Pico
-- Sensors (compatible with 3.3V logic)
-- Motor control interface
-- RS-485 interface for Modbus RTU communication
+- 4 - 20mA Sensors (100R shunt resistor)
+- Active low RPM sensor (1 pulse per revolution)
+- Current monitoring over I2C
+- USB Serial Modbus RTU communication
 
 ## Software Dependencies
 
@@ -63,6 +64,24 @@ The device operates as a Modbus RTU slave with the following specifications:
 - Baud Rate: 115200
 - Data Format: RTU
 - Holding Registers: 10 registers available for control and monitoring
+
+## Modbus Register Map
+
+The following table describes the Modbus holding registers used in this device:
+
+| Register Address | Name | Data Type | Description |
+|-----------------|------|------------|-------------|
+| 40001 (0x0000) | CH0_MA | FLOAT32 | Channel 0 current measurement in mA |
+| 40003 (0x0002) | CH1_MA | FLOAT32 | Channel 1 current measurement in mA |
+| 40005 (0x0004) | CH2_MA | FLOAT32 | Channel 2 current measurement in mA |
+| 40007 (0x0006) | PULSE_RATE | FLOAT32 | Measured pulse rate in Hz |
+| 40009 (0x0008) | MOTOR_MA | FLOAT32 | Motor current measurement in mA |
+
+Notes:
+- All FLOAT32 values use two consecutive registers (32 bits)
+- Register addresses follow the standard Modbus convention where 4xxxx indicates holding registers
+- The device uses standard IEEE 754 floating-point format
+- Values are updated every ADC_INTERVAL for current measurements and in real-time for pulse rate
 
 ## Contributing
 
