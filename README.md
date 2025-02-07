@@ -1,5 +1,7 @@
 # Pico Sensor Interface
 
+NOTE: This code is WIP and in very early dev.
+
 A Raspberry Pi Pico-based sensor interface project that provides real-time monitoring and data transmission using Modbus RTU communication protocol. This project is built using PlatformIO and the Arduino framework.
 
 ## Features
