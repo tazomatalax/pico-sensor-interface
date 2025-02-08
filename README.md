@@ -21,7 +21,7 @@ A Raspberry Pi Pico-based sensor interface project that provides real-time monit
 - Current monitoring over I2C
 - USB Serial Modbus RTU communication
 
-![Basic circuit diagram](https://github.com/ScionResearch/pico-sensor-interface/tree/main/schematic/circuit.png)
+![Basic circuit diagram](/schematic/circuit.png)
 
 ## Software Dependencies
 
