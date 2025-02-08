@@ -93,8 +93,8 @@ Feel free to submit issues, fork the repository, and create pull requests for an
 
 ## License
 
-[Add your chosen license here]
+Not licensed
 
 ## Author
 
-[Your Name/Organization]
+Jeremy Peake - Scion Research
