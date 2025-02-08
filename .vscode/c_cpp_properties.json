@@ -10,6 +10,7 @@
             "includePath": [
                 "G:/My Drive/Documents/Platformio/Projects/pico-sensor-interface/include",
                 "G:/My Drive/Documents/Platformio/Projects/pico-sensor-interface/src",
+                "C:/Users/peake/.platformio/packages/framework-arduinopico/libraries/Wire/src",
                 "G:/My Drive/Documents/Platformio/Projects/pico-sensor-interface/lib/ModbusRTUSlave/src",
                 "C:/Users/peake/.platformio/packages/framework-arduinopico/libraries/FreeRTOS/src",
                 "C:/Users/peake/.platformio/packages/framework-arduinopico/cores/rp2040",
@@ -145,7 +146,6 @@
                 "C:/Users/peake/.platformio/packages/framework-arduinopico/libraries/VFS/src",
                 "C:/Users/peake/.platformio/packages/framework-arduinopico/libraries/WebServer/src",
                 "C:/Users/peake/.platformio/packages/framework-arduinopico/libraries/WiFi/src",
-                "C:/Users/peake/.platformio/packages/framework-arduinopico/libraries/Wire/src",
                 "C:/Users/peake/.platformio/packages/framework-arduinopico/libraries/http-parser/src",
                 "C:/Users/peake/.platformio/packages/framework-arduinopico/libraries/lwIP_CYW43/src",
                 "C:/Users/peake/.platformio/packages/framework-arduinopico/libraries/lwIP_ESPHost/src",
@@ -165,6 +165,7 @@
                 "path": [
                     "G:/My Drive/Documents/Platformio/Projects/pico-sensor-interface/include",
                     "G:/My Drive/Documents/Platformio/Projects/pico-sensor-interface/src",
+                    "C:/Users/peake/.platformio/packages/framework-arduinopico/libraries/Wire/src",
                     "G:/My Drive/Documents/Platformio/Projects/pico-sensor-interface/lib/ModbusRTUSlave/src",
                     "C:/Users/peake/.platformio/packages/framework-arduinopico/libraries/FreeRTOS/src",
                     "C:/Users/peake/.platformio/packages/framework-arduinopico/cores/rp2040",
@@ -300,7 +301,6 @@
                     "C:/Users/peake/.platformio/packages/framework-arduinopico/libraries/VFS/src",
                     "C:/Users/peake/.platformio/packages/framework-arduinopico/libraries/WebServer/src",
                     "C:/Users/peake/.platformio/packages/framework-arduinopico/libraries/WiFi/src",
-                    "C:/Users/peake/.platformio/packages/framework-arduinopico/libraries/Wire/src",
                     "C:/Users/peake/.platformio/packages/framework-arduinopico/libraries/http-parser/src",
                     "C:/Users/peake/.platformio/packages/framework-arduinopico/libraries/lwIP_CYW43/src",
                     "C:/Users/peake/.platformio/packages/framework-arduinopico/libraries/lwIP_ESPHost/src",

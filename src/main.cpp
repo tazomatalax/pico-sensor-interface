@@ -82,7 +82,7 @@ void handle_ADC(void) {
     //if (debug) SerialDebug.printf("16x oversampled - A0: %u, A1: %u, A2: %u\n", samples[0], samples[1], samples[2]);
     for (uint8_t ch = 0; ch < 3; ch++) {
         samples[ch] /= SAMPLES;
-        if (samples[ch] < 20) samples[ch] = 0.0; // Ignore noise
+        if (samples[ch] < ADC_NOISE_FLOOR) samples[ch] = 0.0; // Assume 0 if we're in the noise floor
     }
 
     // Calculate effective mA measurement for each channel and store to holding registers

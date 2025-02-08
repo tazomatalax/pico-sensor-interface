@@ -19,6 +19,7 @@
 // 4-2-mA calcs
 #define SAMPLES  128                // Number of samples per channel measurement (about 100µs per sample)
 #define ADC_INTERVAL 100            // Time in milliseconds between ADC measurements
+#define ADC_NOISE_FLOOR 40          // ADC LSB noise floor volue (ignore ADC raw values below this number)
 #define mA_PER_BIT 0.00805664062    // mA per LSB constant (calculated for 100­Ω shunt resistor, 12-bit ADC, 3.3V reference voltage)
 
 // Motor power update interval (milliseconds)
