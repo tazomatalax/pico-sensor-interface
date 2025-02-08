@@ -3,6 +3,7 @@
 #include "ModbusRTUSlave.h"
 #include "FreeRTOS.h"
 #include "semphr.h"
+#include "INA226.h"
 
 // Pins
 #define PIN_ADC_0       26
@@ -47,6 +48,7 @@
 // Lib objects
 ModbusRTUSlave modbus(SerialModbus);
 SemaphoreHandle_t sensorMutex = NULL;       // Mutex so both cores can safely access sensor data
+INA226 ina226(0x40);                        // INA226 sensor object
 
 // Globals
 struct sensors_t {
