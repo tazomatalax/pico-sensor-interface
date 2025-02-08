@@ -21,6 +21,8 @@ A Raspberry Pi Pico-based sensor interface project that provides real-time monit
 - Current monitoring over I2C
 - USB Serial Modbus RTU communication
 
+![Basic circuit diagram](https://github.com/ScionResearch/pico-sensor-interface/tree/main/schematic/circuit.svg)
+
 ## Software Dependencies
 
 - PlatformIO
@@ -32,7 +34,7 @@ A Raspberry Pi Pico-based sensor interface project that provides real-time monit
 1. Install PlatformIO IDE (VS Code extension) or PlatformIO Core
 2. Clone this repository:
    ```bash
-   git clone https://github.com/yourusername/pico-sensor-interface.git
+   git clone https://github.com/ScionResearch/pico-sensor-interface.git
    ```
 3. Open the project in PlatformIO
 4. Build and upload to your Raspberry Pi Pico
