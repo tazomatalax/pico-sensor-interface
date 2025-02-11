@@ -28,13 +28,41 @@
 
 #define mA_PER_BIT 0.00805664062    // mA per LSB constant (calculated for 100­Ω shunt resistor, 12-bit ADC, 3.3V reference voltage)
 
-// Per board calibration adjustment
-#define mA_OFFSET_ch0           -0.2        // Channel 0 mA offset
-#define mA_OFFSET_ch1           -0.2        // Channel 1 mA offset
-#define mA_OFFSET_ch2           -0.2        // Channel 2 mA offset
-#define mA_MULTIPLIER_ch0       0.991      // Channel 0 mA multiplier
-#define mA_MULTIPLIER_ch1       0.991      // Channel 1 mA multiplier
-#define mA_MULTIPLIER_ch2       0.991      // Channel 2 mA multiplier
+// Per board calibration adjustment (choose 1) ------------------------------------------>
+
+// Pico sensor interface #1
+#define mA_OFFSET_ch0           -0.2            // Channel 0 mA offset
+#define mA_OFFSET_ch1           -0.2            // Channel 1 mA offset
+#define mA_OFFSET_ch2           -0.2            // Channel 2 mA offset
+#define mA_MULTIPLIER_ch0       0.991           // Channel 0 mA multiplier
+#define mA_MULTIPLIER_ch1       0.991           // Channel 1 mA multiplier
+#define mA_MULTIPLIER_ch2       0.991           // Channel 2 mA multiplier
+
+/*// Pico sensor interface #2 
+#define mA_OFFSET_ch0           0.0             // Channel 0 mA offset
+#define mA_OFFSET_ch1           0.0             // Channel 1 mA offset
+#define mA_OFFSET_ch2           0.0             // Channel 2 mA offset
+#define mA_MULTIPLIER_ch0       1.0             // Channel 0 mA multiplier
+#define mA_MULTIPLIER_ch1       1.0             // Channel 1 mA multiplier
+#define mA_MULTIPLIER_ch2       1.0             // Channel 2 mA multiplier*/
+
+/*// Pico sensor interface #3 
+#define mA_OFFSET_ch0           0.0             // Channel 0 mA offset
+#define mA_OFFSET_ch1           0.0             // Channel 1 mA offset
+#define mA_OFFSET_ch2           0.0             // Channel 2 mA offset
+#define mA_MULTIPLIER_ch0       1.0             // Channel 0 mA multiplier
+#define mA_MULTIPLIER_ch1       1.0             // Channel 1 mA multiplier
+#define mA_MULTIPLIER_ch2       1.0             // Channel 2 mA multiplier*/
+
+/*// Pico sensor interface #4 
+#define mA_OFFSET_ch0           0.0             // Channel 0 mA offset
+#define mA_OFFSET_ch1           0.0             // Channel 1 mA offset
+#define mA_OFFSET_ch2           0.0             // Channel 2 mA offset
+#define mA_MULTIPLIER_ch0       1.0             // Channel 0 mA multiplier
+#define mA_MULTIPLIER_ch1       1.0             // Channel 1 mA multiplier
+#define mA_MULTIPLIER_ch2       1.0             // Channel 2 mA multiplier*/
+
+// <--------------------------------------------------------------------------------------
 
 // Motor power update interval (milliseconds)
 #define MOTOR_INTERVAL 500
