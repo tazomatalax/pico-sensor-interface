@@ -20,14 +20,22 @@ void setup() {
     analogReadResolution(12);
     pinMode(LED_BUILTIN, OUTPUT);
 
-    // TODO: Init power monitoring - INA226?
-    /*Wire.setSDA(PIN_SDA);
-    Wire.setSCL(PIN_SCL);*/
-    // ...
+    Wire.setSDA(PIN_SDA);
+    Wire.setSCL(PIN_SCL);
+    Wire.begin();
+    if (!ina226.begin()) {
+        if (debug) SerialDebug.println("ERROR: Failed to start INA226 current sensor interface");    
+        while (1);
+    }
+    if (debug) SerialDebug.println("INA226 current sensor interface started");
+    ina226.setAverage(INA226_1024_SAMPLES);
+    uint16_t err = ina226.setMaxCurrentShunt(0.8, 0.1, true);
+    char *shunt_err[4] = {"shunt voltage high", "max current low", "shunt low", "normalize fail"};
+    if (debug && err != 0) SerialDebug.printf("ERROR: Failed to set INA226 shunt current limit, reason: %s\r\n", shunt_err[err & 3]);
     
     // DEBUG - Setup modbus serial port on UART0 (debug mode only - frees up USB for uploads and debugging)
-    Serial1.setTX(PIN_SDA);
-    Serial1.setRX(PIN_SCL);
+    Serial1.setTX(PIN_UART_TX);
+    Serial1.setRX(PIN_UART_RX);
     // END DEBUG
 
     modbus.configureHoldingRegisters(holdingRegisters, 10);
@@ -108,19 +116,20 @@ void handle_ADC(void) {
     }
 
     // Used to check ADC reads are not taking too long due to SAMPLES setting
-    if (debug) {
+    /*if (debug) {
         uint32_t adc_time = millis() - adcLastMillis;
         SerialDebug.printf("ADC oversampled %ix, time: %ums\n", SAMPLES, adc_time);
-    }
+    }*/
 }
 
 // Update motor current from INA226? sensor
 void handle_current_sensor(void) {
     motorLastMillis += MOTOR_INTERVAL;
-    float motor_current = 0.0;
-    // Get motor current reading...
-
-    // ...
+    float motor_current = ina226.getCurrent_mA();
+    motor_current = mA_OFFSET_ina226 + motor_current * mA_MULTIPLIER_ina226;
+    if (debug) {
+        SerialDebug.printf("%fV, %fV, %fmA, %fW\n", ina226.getBusVoltage(), ina226.getShuntVoltage(), motor_current, ina226.getPower());
+    }
 
     if (xSemaphoreTake(sensorMutex, 0) == pdTRUE) {
         sensors.motor_mA = motor_current;

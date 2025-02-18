@@ -10,12 +10,15 @@
 #define PIN_ADC_1       27
 #define PIN_ADC_2       28
 #define PIN_PULSE_INPUT 22
-#define PIN_SDA         16
-#define PIN_SCL         17
+#define PIN_SDA         12
+#define PIN_SCL         13
+#define PIN_UART_TX     16
+#define PIN_UART_RX     17
+
 
 // Serial
-#define SerialDebug Serial          // USB serial
-#define SerialModbus Serial1        // UART 0
+#define SerialDebug Serial1          // USB serial
+#define SerialModbus Serial        // UART 0
 
 // Modbus
 #define MODBUS_SLAVE_ID 1
@@ -34,33 +37,41 @@
 #define mA_OFFSET_ch0           -0.2            // Channel 0 mA offset
 #define mA_OFFSET_ch1           -0.2            // Channel 1 mA offset
 #define mA_OFFSET_ch2           -0.2            // Channel 2 mA offset
+#define mA_OFFSET_ina226        0.0             // Motor current sensor mA offset
 #define mA_MULTIPLIER_ch0       0.991           // Channel 0 mA multiplier
 #define mA_MULTIPLIER_ch1       0.991           // Channel 1 mA multiplier
 #define mA_MULTIPLIER_ch2       0.991           // Channel 2 mA multiplier
+#define mA_MULTIPLIER_ina226    0.973           // Motor current sensor mA multiplier
 
 /*// Pico sensor interface #2 
 #define mA_OFFSET_ch0           0.0             // Channel 0 mA offset
 #define mA_OFFSET_ch1           0.0             // Channel 1 mA offset
 #define mA_OFFSET_ch2           0.0             // Channel 2 mA offset
+#define mA_OFFSET_ina226        0.0             // Motor current sensor mA offset
 #define mA_MULTIPLIER_ch0       1.0             // Channel 0 mA multiplier
 #define mA_MULTIPLIER_ch1       1.0             // Channel 1 mA multiplier
-#define mA_MULTIPLIER_ch2       1.0             // Channel 2 mA multiplier*/
+#define mA_MULTIPLIER_ch2       1.0             // Channel 2 mA multiplier
+#define mA_MULTIPLIER_ina226    1.0             // Motor current sensor mA multiplier*/
 
 /*// Pico sensor interface #3 
 #define mA_OFFSET_ch0           0.0             // Channel 0 mA offset
 #define mA_OFFSET_ch1           0.0             // Channel 1 mA offset
 #define mA_OFFSET_ch2           0.0             // Channel 2 mA offset
+#define mA_OFFSET_ina226        0.0             // Motor current sensor mA offset
 #define mA_MULTIPLIER_ch0       1.0             // Channel 0 mA multiplier
 #define mA_MULTIPLIER_ch1       1.0             // Channel 1 mA multiplier
-#define mA_MULTIPLIER_ch2       1.0             // Channel 2 mA multiplier*/
+#define mA_MULTIPLIER_ch2       1.0             // Channel 2 mA multiplier
+#define mA_MULTIPLIER_ina226    1.0             // Motor current sensor mA multiplier*/
 
 /*// Pico sensor interface #4 
 #define mA_OFFSET_ch0           0.0             // Channel 0 mA offset
 #define mA_OFFSET_ch1           0.0             // Channel 1 mA offset
 #define mA_OFFSET_ch2           0.0             // Channel 2 mA offset
+#define mA_OFFSET_ina226        0.0             // Motor current sensor mA offset
 #define mA_MULTIPLIER_ch0       1.0             // Channel 0 mA multiplier
 #define mA_MULTIPLIER_ch1       1.0             // Channel 1 mA multiplier
-#define mA_MULTIPLIER_ch2       1.0             // Channel 2 mA multiplier*/
+#define mA_MULTIPLIER_ch2       1.0             // Channel 2 mA multiplier
+#define mA_MULTIPLIER_ina226    1.0             // Motor current sensor mA multiplier*/
 
 // <--------------------------------------------------------------------------------------
 
@@ -80,11 +91,11 @@ INA226 ina226(0x40);                        // INA226 sensor object
 
 // Globals
 struct sensors_t {
-    float ch0_mA = 4.0;
-    float ch1_mA = 8.596;
-    float ch2_mA = 16.25736;
-    float rpm = 0.0;
-    float motor_mA = 0.0;
+    float ch0_mA;
+    float ch1_mA;
+    float ch2_mA;
+    float rpm;
+    float motor_mA;
 };
 
 sensors_t sensors;
