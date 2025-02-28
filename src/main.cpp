@@ -29,7 +29,7 @@ void setup() {
     }
     if (debug) SerialDebug.println("INA226 current sensor interface started");
     ina226.setAverage(INA226_1024_SAMPLES);
-    uint16_t err = ina226.setMaxCurrentShunt(0.8, 0.1, true);
+    uint16_t err = ina226.setMaxCurrentShunt(8, 0.01, true);
     char *shunt_err[4] = {"shunt voltage high", "max current low", "shunt low", "normalize fail"};
     if (debug && err != 0) SerialDebug.printf("ERROR: Failed to set INA226 shunt current limit, reason: %s\r\n", shunt_err[err & 3]);
     
