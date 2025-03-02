@@ -33,7 +33,8 @@
 
 // Per board calibration adjustment (choose 1) ------------------------------------------>
 
-// Pico sensor interface #1
+/*// Pico sensor interface #1
+#define UNIT_ID                 "Unit 1"
 #define mA_OFFSET_ch0           -0.2            // Channel 0 mA offset
 #define mA_OFFSET_ch1           -0.2            // Channel 1 mA offset
 #define mA_OFFSET_ch2           -0.2            // Channel 2 mA offset
@@ -41,37 +42,40 @@
 #define mA_MULTIPLIER_ch0       0.991           // Channel 0 mA multiplier
 #define mA_MULTIPLIER_ch1       0.991           // Channel 1 mA multiplier
 #define mA_MULTIPLIER_ch2       0.991           // Channel 2 mA multiplier
-#define mA_MULTIPLIER_ina226    0.973           // Motor current sensor mA multiplier
+#define mA_MULTIPLIER_ina226    0.916           // Motor current sensor mA multiplier*/
 
 /*// Pico sensor interface #2 
-#define mA_OFFSET_ch0           0.0             // Channel 0 mA offset
-#define mA_OFFSET_ch1           0.0             // Channel 1 mA offset
-#define mA_OFFSET_ch2           0.0             // Channel 2 mA offset
+#define UNIT_ID                 "Unit 2"
+#define mA_OFFSET_ch0           -0.08           // Channel 0 mA offset
+#define mA_OFFSET_ch1           -0.08           // Channel 1 mA offset
+#define mA_OFFSET_ch2           -0.08           // Channel 2 mA offset
 #define mA_OFFSET_ina226        0.0             // Motor current sensor mA offset
-#define mA_MULTIPLIER_ch0       1.0             // Channel 0 mA multiplier
-#define mA_MULTIPLIER_ch1       1.0             // Channel 1 mA multiplier
-#define mA_MULTIPLIER_ch2       1.0             // Channel 2 mA multiplier
-#define mA_MULTIPLIER_ina226    1.0             // Motor current sensor mA multiplier*/
+#define mA_MULTIPLIER_ch0       0.99            // Channel 0 mA multiplier
+#define mA_MULTIPLIER_ch1       0.99            // Channel 1 mA multiplier
+#define mA_MULTIPLIER_ch2       0.99            // Channel 2 mA multiplier
+#define mA_MULTIPLIER_ina226    0.91            // Motor current sensor mA multiplier*/
 
 /*// Pico sensor interface #3 
-#define mA_OFFSET_ch0           0.0             // Channel 0 mA offset
-#define mA_OFFSET_ch1           0.0             // Channel 1 mA offset
-#define mA_OFFSET_ch2           0.0             // Channel 2 mA offset
-#define mA_OFFSET_ina226        0.0             // Motor current sensor mA offset
-#define mA_MULTIPLIER_ch0       1.0             // Channel 0 mA multiplier
-#define mA_MULTIPLIER_ch1       1.0             // Channel 1 mA multiplier
-#define mA_MULTIPLIER_ch2       1.0             // Channel 2 mA multiplier
-#define mA_MULTIPLIER_ina226    1.0             // Motor current sensor mA multiplier*/
+#define UNIT_ID                 "Unit 3"
+#define mA_OFFSET_ch0           -0.17           // Channel 0 mA offset
+#define mA_OFFSET_ch1           -0.17           // Channel 1 mA offset
+#define mA_OFFSET_ch2           -0.17           // Channel 2 mA offset
+#define mA_OFFSET_ina226        2.0             // Motor current sensor mA offset
+#define mA_MULTIPLIER_ch0       0.991           // Channel 0 mA multiplier
+#define mA_MULTIPLIER_ch1       0.991           // Channel 1 mA multiplier
+#define mA_MULTIPLIER_ch2       0.991           // Channel 2 mA multiplier
+#define mA_MULTIPLIER_ina226    0.921           // Motor current sensor mA multiplier*/
 
-/*// Pico sensor interface #4 
-#define mA_OFFSET_ch0           0.0             // Channel 0 mA offset
-#define mA_OFFSET_ch1           0.0             // Channel 1 mA offset
-#define mA_OFFSET_ch2           0.0             // Channel 2 mA offset
-#define mA_OFFSET_ina226        0.0             // Motor current sensor mA offset
-#define mA_MULTIPLIER_ch0       1.0             // Channel 0 mA multiplier
-#define mA_MULTIPLIER_ch1       1.0             // Channel 1 mA multiplier
-#define mA_MULTIPLIER_ch2       1.0             // Channel 2 mA multiplier
-#define mA_MULTIPLIER_ina226    1.0             // Motor current sensor mA multiplier*/
+// Pico sensor interface #4 
+#define UNIT_ID                 "Unit 4"
+#define mA_OFFSET_ch0           -0.22           // Channel 0 mA offset
+#define mA_OFFSET_ch1           -0.22           // Channel 1 mA offset
+#define mA_OFFSET_ch2           -0.22           // Channel 2 mA offset
+#define mA_OFFSET_ina226        -3.0            // Motor current sensor mA offset
+#define mA_MULTIPLIER_ch0       0.991           // Channel 0 mA multiplier
+#define mA_MULTIPLIER_ch1       0.991           // Channel 1 mA multiplier
+#define mA_MULTIPLIER_ch2       0.991           // Channel 2 mA multiplier
+#define mA_MULTIPLIER_ina226    0.897           // Motor current sensor mA multiplier
 
 // <--------------------------------------------------------------------------------------
 

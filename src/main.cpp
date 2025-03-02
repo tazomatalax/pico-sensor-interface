@@ -15,7 +15,7 @@ void setup() {
     if (debug) {
         SerialDebug.begin(115200);
         while (!SerialDebug);
-        SerialDebug.println("Starting pico sensor interface in debug mode.");
+        SerialDebug.printf("Starting %s pico sensor interface in debug mode.\n", UNIT_ID);
     }
     analogReadResolution(12);
     pinMode(LED_BUILTIN, OUTPUT);
@@ -120,6 +120,10 @@ void handle_ADC(void) {
         uint32_t adc_time = millis() - adcLastMillis;
         SerialDebug.printf("ADC oversampled %ix, time: %ums\n", SAMPLES, adc_time);
     }*/
+
+    if (debug) {
+        SerialDebug.printf("ADC ch0: %fmA, ch1: %fmA, ch2: %fmA\n", calculated_values[0], calculated_values[1], calculated_values[2]);
+    }
 }
 
 // Update motor current from INA226? sensor
