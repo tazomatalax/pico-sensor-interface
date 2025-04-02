@@ -1,0 +1,870 @@
+[
+    {
+        "id": "ac978cd8aec44371",
+        "type": "tab",
+        "label": "Flow 2",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "237bcd4b6f3ff0da",
+        "type": "modbus-flex-getter",
+        "z": "ac978cd8aec44371",
+        "name": "",
+        "showStatusActivities": false,
+        "showErrors": false,
+        "showWarnings": true,
+        "logIOActivities": false,
+        "server": "5b33d3a0df2de5e0",
+        "useIOFile": false,
+        "ioFile": "",
+        "useIOForPayload": false,
+        "emptyMsgOnFail": false,
+        "keepMsgProperties": false,
+        "delayOnStart": false,
+        "startDelayTime": "",
+        "x": 490,
+        "y": 180,
+        "wires": [
+            [
+                "4da9d0eedf82a427",
+                "parser1"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "c542afaad3d2881f",
+        "type": "inject",
+        "z": "ac978cd8aec44371",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "5",
+        "crontab": "",
+        "once": true,
+        "onceDelay": "1",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 190,
+        "y": 100,
+        "wires": [
+            [
+                "a9634b12787cd3d4",
+                "48ca6410c5bae19d"
+            ]
+        ]
+    },
+    {
+        "id": "a9634b12787cd3d4",
+        "type": "function",
+        "z": "ac978cd8aec44371",
+        "name": "Modbus Request Setup",
+        "func": "//Store unit id here\nmsg.unitid = 1; \nmsg.payload = {\n    'fc': 3,\n    'unitid': 1,\n    'address': 0,\n    'quantity': 10 \n};\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 290,
+        "y": 260,
+        "wires": [
+            [
+                "237bcd4b6f3ff0da"
+            ]
+        ]
+    },
+    {
+        "id": "4da9d0eedf82a427",
+        "type": "debug",
+        "z": "ac978cd8aec44371",
+        "name": "debug 2",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 650,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "parser1",
+        "type": "buffer-parser",
+        "z": "ac978cd8aec44371",
+        "name": "Parse Pico 1",
+        "data": "payload",
+        "dataType": "msg",
+        "specification": "spec",
+        "specificationType": "ui",
+        "items": [
+            {
+                "type": "floatle",
+                "name": "Temperature",
+                "offset": 0,
+                "length": 1,
+                "offsetbit": 0,
+                "scale": "1",
+                "mask": ""
+            },
+            {
+                "type": "floatle",
+                "name": "pH",
+                "offset": 4,
+                "length": 1,
+                "offsetbit": 0,
+                "scale": "1",
+                "mask": ""
+            },
+            {
+                "type": "floatle",
+                "name": "ORP",
+                "offset": 8,
+                "length": 1,
+                "offsetbit": 0,
+                "scale": "1",
+                "mask": ""
+            },
+            {
+                "type": "floatle",
+                "name": "RPM",
+                "offset": 12,
+                "length": 1,
+                "offsetbit": 0,
+                "scale": "1",
+                "mask": ""
+            },
+            {
+                "type": "floatle",
+                "name": "motor_mA",
+                "offset": 16,
+                "length": 1,
+                "offsetbit": 0,
+                "scale": "1",
+                "mask": ""
+            }
+        ],
+        "swap1": "swap16",
+        "swap2": "",
+        "swap3": "",
+        "swap1Type": "swap",
+        "swap2Type": "swap",
+        "swap3Type": "swap",
+        "msgProperty": "",
+        "msgPropertyType": "",
+        "resultType": "keyvalue",
+        "resultTypeType": "",
+        "multipleResult": false,
+        "fanOutMultipleResult": false,
+        "setTopic": false,
+        "outputs": 1,
+        "x": 730,
+        "y": 200,
+        "wires": [
+            [
+                "da801bb2e618c5a0"
+            ]
+        ]
+    },
+    {
+        "id": "87759633c5d9f7f2",
+        "type": "debug",
+        "z": "ac978cd8aec44371",
+        "name": "debug 14",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1000,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "48ca6410c5bae19d",
+        "type": "delay",
+        "z": "ac978cd8aec44371",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "200",
+        "timeoutUnits": "milliseconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 170,
+        "y": 340,
+        "wires": [
+            [
+                "bb5ed0db02b4330a",
+                "6a8a53838b8b14af"
+            ]
+        ]
+    },
+    {
+        "id": "bb5ed0db02b4330a",
+        "type": "function",
+        "z": "ac978cd8aec44371",
+        "name": "Modbus Request Setup",
+        "func": "//Store unit id here\nmsg.unitid = 2;\nmsg.payload = {\n    'fc': 3,\n    'unitid': 1,\n    'address': 0,\n    'quantity': 10 \n};\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 250,
+        "y": 420,
+        "wires": [
+            [
+                "26409017be2e8b10"
+            ]
+        ]
+    },
+    {
+        "id": "26409017be2e8b10",
+        "type": "modbus-flex-getter",
+        "z": "ac978cd8aec44371",
+        "name": "Read Raw Modbus Data",
+        "showStatusActivities": true,
+        "showErrors": true,
+        "showWarnings": true,
+        "logIOActivities": false,
+        "server": "a1f84dec681b9b29",
+        "useIOFile": false,
+        "ioFile": "",
+        "useIOForPayload": false,
+        "emptyMsgOnFail": false,
+        "keepMsgProperties": true,
+        "delayOnStart": false,
+        "startDelayTime": "",
+        "x": 510,
+        "y": 360,
+        "wires": [
+            [
+                "b6cd9fc8a3165f7e"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "b4c9ebbdfa012465",
+        "type": "function",
+        "z": "ac978cd8aec44371",
+        "name": "Modbus Request Setup",
+        "func": "//Store unit id here\nmsg.unitid = 3;\nmsg.payload = {\n    'fc': 3,\n    'unitid': 1,\n    'address': 0,\n    'quantity': 10 \n};\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 250,
+        "y": 520,
+        "wires": [
+            [
+                "8d8a31674c496bc3"
+            ]
+        ]
+    },
+    {
+        "id": "8d8a31674c496bc3",
+        "type": "modbus-flex-getter",
+        "z": "ac978cd8aec44371",
+        "name": "Read Raw Modbus Data",
+        "showStatusActivities": true,
+        "showErrors": true,
+        "showWarnings": true,
+        "logIOActivities": false,
+        "server": "ef99d96f993392a8",
+        "useIOFile": false,
+        "ioFile": "",
+        "useIOForPayload": false,
+        "emptyMsgOnFail": false,
+        "keepMsgProperties": true,
+        "delayOnStart": false,
+        "startDelayTime": "",
+        "x": 508,
+        "y": 520,
+        "wires": [
+            [
+                "e538f9895bf8d49b"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "41ecbfac290e7bb7",
+        "type": "function",
+        "z": "ac978cd8aec44371",
+        "name": "Modbus Request Setup",
+        "func": "//Store unit id here\nmsg.unitid = 4;\nmsg.payload = {\n    'fc': 3,\n    'unitid': 1,\n    'address': 0,\n    'quantity': 10\n};\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 250,
+        "y": 620,
+        "wires": [
+            [
+                "06e8d36c947a56d0"
+            ]
+        ]
+    },
+    {
+        "id": "06e8d36c947a56d0",
+        "type": "modbus-flex-getter",
+        "z": "ac978cd8aec44371",
+        "name": "Read Raw Modbus Data",
+        "showStatusActivities": true,
+        "showErrors": true,
+        "showWarnings": true,
+        "logIOActivities": false,
+        "server": "mbclient1",
+        "useIOFile": false,
+        "ioFile": "",
+        "useIOForPayload": false,
+        "emptyMsgOnFail": false,
+        "keepMsgProperties": true,
+        "delayOnStart": false,
+        "startDelayTime": "",
+        "x": 508,
+        "y": 620,
+        "wires": [
+            [
+                "2aaaa727b8288992"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "6a8a53838b8b14af",
+        "type": "delay",
+        "z": "ac978cd8aec44371",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "200",
+        "timeoutUnits": "milliseconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 170,
+        "y": 480,
+        "wires": [
+            [
+                "b4c9ebbdfa012465",
+                "8f9e7921f8a07719"
+            ]
+        ]
+    },
+    {
+        "id": "8f9e7921f8a07719",
+        "type": "delay",
+        "z": "ac978cd8aec44371",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "200",
+        "timeoutUnits": "milliseconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 170,
+        "y": 560,
+        "wires": [
+            [
+                "41ecbfac290e7bb7"
+            ]
+        ]
+    },
+    {
+        "id": "a9ec1568645bc5f9",
+        "type": "influxdb batch",
+        "z": "ac978cd8aec44371",
+        "influxdb": "d9a29a25883258e7",
+        "precision": "",
+        "retentionPolicy": "",
+        "name": "Influx Batch",
+        "database": "database",
+        "precisionV18FluxV20": "ms",
+        "retentionPolicyV18Flux": "",
+        "org": "Cetogenix",
+        "bucket": "reactor-monitoring",
+        "x": 1290,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "b6cd9fc8a3165f7e",
+        "type": "buffer-parser",
+        "z": "ac978cd8aec44371",
+        "name": "Parse Pico 2",
+        "data": "payload",
+        "dataType": "msg",
+        "specification": "spec",
+        "specificationType": "ui",
+        "items": [
+            {
+                "type": "floatle",
+                "name": "Temperature",
+                "offset": 0,
+                "length": 1,
+                "offsetbit": 0,
+                "scale": "1",
+                "mask": ""
+            },
+            {
+                "type": "floatle",
+                "name": "pH",
+                "offset": 4,
+                "length": 1,
+                "offsetbit": 0,
+                "scale": "1",
+                "mask": ""
+            },
+            {
+                "type": "floatle",
+                "name": "ORP",
+                "offset": 8,
+                "length": 1,
+                "offsetbit": 0,
+                "scale": "1",
+                "mask": ""
+            },
+            {
+                "type": "floatle",
+                "name": "RPM",
+                "offset": 12,
+                "length": 1,
+                "offsetbit": 0,
+                "scale": "1",
+                "mask": ""
+            },
+            {
+                "type": "floatle",
+                "name": "motor_mA",
+                "offset": 16,
+                "length": 1,
+                "offsetbit": 0,
+                "scale": "1",
+                "mask": ""
+            }
+        ],
+        "swap1": "swap16",
+        "swap2": "",
+        "swap3": "",
+        "swap1Type": "swap",
+        "swap2Type": "swap",
+        "swap3Type": "swap",
+        "msgProperty": "",
+        "msgPropertyType": "",
+        "resultType": "keyvalue",
+        "resultTypeType": "",
+        "multipleResult": false,
+        "fanOutMultipleResult": false,
+        "setTopic": false,
+        "outputs": 1,
+        "x": 730,
+        "y": 360,
+        "wires": [
+            [
+                "da801bb2e618c5a0"
+            ]
+        ]
+    },
+    {
+        "id": "e538f9895bf8d49b",
+        "type": "buffer-parser",
+        "z": "ac978cd8aec44371",
+        "name": "Parse Pico 3",
+        "data": "payload",
+        "dataType": "msg",
+        "specification": "spec",
+        "specificationType": "ui",
+        "items": [
+            {
+                "type": "floatle",
+                "name": "Temperature",
+                "offset": 0,
+                "length": 1,
+                "offsetbit": 0,
+                "scale": "1",
+                "mask": ""
+            },
+            {
+                "type": "floatle",
+                "name": "pH",
+                "offset": 4,
+                "length": 1,
+                "offsetbit": 0,
+                "scale": "1",
+                "mask": ""
+            },
+            {
+                "type": "floatle",
+                "name": "ORP",
+                "offset": 8,
+                "length": 1,
+                "offsetbit": 0,
+                "scale": "1",
+                "mask": ""
+            },
+            {
+                "type": "floatle",
+                "name": "RPM",
+                "offset": 12,
+                "length": 1,
+                "offsetbit": 0,
+                "scale": "1",
+                "mask": ""
+            },
+            {
+                "type": "floatle",
+                "name": "motor_mA",
+                "offset": 16,
+                "length": 1,
+                "offsetbit": 0,
+                "scale": "1",
+                "mask": ""
+            }
+        ],
+        "swap1": "swap16",
+        "swap2": "",
+        "swap3": "",
+        "swap1Type": "swap",
+        "swap2Type": "swap",
+        "swap3Type": "swap",
+        "msgProperty": "",
+        "msgPropertyType": "",
+        "resultType": "keyvalue",
+        "resultTypeType": "",
+        "multipleResult": false,
+        "fanOutMultipleResult": false,
+        "setTopic": false,
+        "outputs": 1,
+        "x": 750,
+        "y": 500,
+        "wires": [
+            [
+                "da801bb2e618c5a0",
+                "87759633c5d9f7f2"
+            ]
+        ]
+    },
+    {
+        "id": "da801bb2e618c5a0",
+        "type": "function",
+        "z": "ac978cd8aec44371",
+        "name": "Scale and Filter Data",
+        "func": "// --- Configuration Section (Easily Editable) ---\n\nconst deviceIdPrefix = \"pico_\";  // Prefix for device IDs\n\n// Calibration/Scaling factors.  These are now *PER DEVICE* and *PER SENSOR*.\nconst scalingFactors = {\n    \"pico_1\": {\n        Temperature: { sensorType: \"mA_INPUT\", rangeMin: -10, rangeMax: 150 }, // Example: 0-100 degrees\n        pH:          { sensorType: \"mA_INPUT\", rangeMin: -1, rangeMax: 15  }, // Example: 0-14 pH\n        ORP:         { sensorType: \"mA_INPUT\", rangeMin: -1000, rangeMax: +0 },// Example: -500 to +500 mV\n        motor_mA:    { multiplier: 0.1, offset: 0.0, sensorType: \"INA226\" },\n        RPM:         { multiplier: 1, offset: 0, sensorType: \"PULSE\", maxValue: 250, defaultValue: 0 }\n    },\n    \"pico_2\": {\n        Temperature: { sensorType: \"mA_INPUT\", rangeMin: -10, rangeMax: 150 },\n        pH:          { sensorType: \"mA_INPUT\", rangeMin: 0, rangeMax: 15, offset: 1.0 }, // Added offset to fix range issue\n        ORP:         { sensorType: \"mA_INPUT\", rangeMin: -1000, rangeMax: +0 },\n        motor_mA:    { multiplier: 0.1, offset: 0.0, sensorType: \"INA226\" },\n        RPM:         { multiplier: 1, offset: 0, sensorType: \"PULSE\", maxValue: 250, defaultValue: 0 }\n    },\n    \"pico_3\": {\n        Temperature: { sensorType: \"mA_INPUT\", rangeMin: 0, rangeMax: 100 },\n        pH:          { sensorType: \"mA_INPUT\", rangeMin: 0, rangeMax: 14 },\n        ORP:         { sensorType: \"mA_INPUT\", rangeMin: -1000, rangeMax: +0 },\n        motor_mA:    { multiplier: 0.1, offset: 0.0, sensorType: \"INA226\" },\n        RPM:         { multiplier: 1, offset: 0, sensorType: \"PULSE\", maxValue: 250, defaultValue: 0 }\n    },\n    \"pico_4\": {\n        Temperature: { sensorType: \"mA_INPUT\", rangeMin: 0, rangeMax: 100 },\n        pH:          { sensorType: \"mA_INPUT\", rangeMin: 0, rangeMax: 14 },\n        ORP:         { sensorType: \"mA_INPUT\", rangeMin: -1000, rangeMax: +0 },\n        motor_mA:    { multiplier: 0.1, offset: 0.0, sensorType: \"INA226\" },\n        RPM:         { multiplier: 1, offset: 0, sensorType: \"PULSE\", maxValue: 250, defaultValue: 0 }\n    },\n};\n\n// Define valid ranges for each measurement, *after* final scaling.  These are your REAL-WORLD units.\nconst validRanges = {\n    Temperature: { min: -1, max: 110 },  // Allow slight negative/overrange\n    pH:          { min: -0.5, max: 14.5 },\n    ORP:         { min: -2100, max: 2100 },\n    motor_mA:    { min: -5, max: 2000 },\n    RPM:         { min: 0, max: 250 }  // Slightly above expected max, for margin.\n};\n\n// Noise floor for 4-20mA signals.\nconst noiseFloor_mA = 0.5;\n\n// Measurement name for InfluxDB\nconst influxMeasurement = 'pico_measurements';\n\n// --- Additional Configuration for RPM Handling ---\nconst maxReasonableRPM = 250; // Maximum RPM, slightly above expected max.\n\n// --- Data Filtering Settings ---\nconst useDataFiltering = true;\n\n// --- End Configuration Section ---\n\n// --- Helper Functions ---\n\nfunction scale_mA_Input(value, rangeMin, rangeMax) {\n    // 1. Apply noise floor (in mA).\n    if (value < noiseFloor_mA) {\n        value = 0;\n    }\n\n    // 2. Convert 4-20mA to 0-100%.\n    const percent = (value - 4) / 16;\n\n    // 3. Clamp the percentage.\n    const clampedPercent = Math.max(0, Math.min(1, percent));\n\n    // 4. Scale to engineering units.\n    const scaledValue = rangeMin + clampedPercent * (rangeMax - rangeMin);\n    return scaledValue;\n}\n\nfunction validateAndScale(value, fieldName, deviceId) {\n    if (typeof value !== 'number' || isNaN(value) || !isFinite(value)) {\n        node.warn(`Invalid ${fieldName} for ${deviceId}: ${value} (Not a valid number)`);\n        return null;\n    }\n    \n    const deviceScaling = scalingFactors[deviceId] || {};\n    const scaling = deviceScaling[fieldName] || { sensorType: \"UNKNOWN\", rangeMin: 0, rangeMax: 1 };\n    \n    let scaledValue = value;\n    \n    // Pre-filtering for extreme values (especially for RPM)\n    if (fieldName === \"RPM\" && (value > 1000 || value < -10)) {\n        node.warn(`Filtering extreme ${fieldName} for ${deviceId}: ${value} (Setting to default value)`);\n        return scaling.defaultValue || 0;\n    }\n    \n    // Apply scaling based on sensor type\n    if (scaling.sensorType === \"mA_INPUT\") {\n        // Scale the mA value to engineering units.\n        scaledValue = scale_mA_Input(scaledValue, scaling.rangeMin, scaling.rangeMax);\n        \n        // Apply any additional offset if specified\n        if (scaling.offset) {\n            scaledValue += scaling.offset;\n        }\n        \n    } else if (scaling.sensorType === \"INA226\") {\n        // Apply offset and multiplier (for motor current).\n        scaledValue = value + scaling.offset;\n        scaledValue = scaledValue * scaling.multiplier;\n    } else if (scaling.sensorType === \"PULSE\") {\n        // RPM-Specific Handling:\n        if (scaledValue > (scaling.maxValue || maxReasonableRPM)) {\n            node.warn(`Invalid ${fieldName} for ${deviceId}: ${scaledValue} (Exceeds max reasonable RPM)`);\n            return scaling.defaultValue || 0; // Return the default value for this device\n        }\n    }\n    \n    // Range validation *after* scaling\n    const range = validRanges[fieldName];\n    if (range && (scaledValue < range.min || scaledValue > range.max)) {\n        node.warn(`Invalid ${fieldName} for ${deviceId}: ${scaledValue} (Out of range [${range.min}, ${range.max}])`);\n        \n        // For pH values, attempt a rescue by clamping\n        if (fieldName === \"pH\") {\n            return Math.max(range.min, Math.min(range.max, scaledValue));\n        }\n        \n        return null;\n    }\n    \n    return scaledValue;\n}\n\n// --- Main Function Logic ---\n\nconst data = msg.payload;\nconst deviceId = msg.unitid ? `${deviceIdPrefix}${msg.unitid}` : `${deviceIdPrefix}1`;\nconst timestamp = Date.now();\n\nconst influxData = {\n    measurement: influxMeasurement,\n    tags: {\n        device: deviceId\n    },\n    timestamp: timestamp,\n    fields: {}\n};\n\nconst fieldsToProcess = [\"Temperature\", \"pH\", \"ORP\", \"motor_mA\", \"RPM\"];\n\nfor (const field of fieldsToProcess) {\n    const scaledValue = validateAndScale(data[field], field, deviceId);\n    if (scaledValue !== null) {\n        influxData.fields[field] = scaledValue;\n    }\n}\n\nmsg.payload = [influxData];\nreturn msg;",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 980,
+        "y": 380,
+        "wires": [
+            [
+                "a9ec1568645bc5f9",
+                "c0eeb8449b8a850c",
+                "f49821d1ade651d8"
+            ]
+        ]
+    },
+    {
+        "id": "2aaaa727b8288992",
+        "type": "buffer-parser",
+        "z": "ac978cd8aec44371",
+        "name": "Parse Pico 4",
+        "data": "payload",
+        "dataType": "msg",
+        "specification": "spec",
+        "specificationType": "ui",
+        "items": [
+            {
+                "type": "floatle",
+                "name": "Temperature",
+                "offset": 0,
+                "length": 1,
+                "offsetbit": 0,
+                "scale": "1",
+                "mask": ""
+            },
+            {
+                "type": "floatle",
+                "name": "pH",
+                "offset": 4,
+                "length": 1,
+                "offsetbit": 0,
+                "scale": "1",
+                "mask": ""
+            },
+            {
+                "type": "floatle",
+                "name": "ORP",
+                "offset": 8,
+                "length": 1,
+                "offsetbit": 0,
+                "scale": "1",
+                "mask": ""
+            },
+            {
+                "type": "floatle",
+                "name": "RPM",
+                "offset": 12,
+                "length": 1,
+                "offsetbit": 0,
+                "scale": "1",
+                "mask": ""
+            },
+            {
+                "type": "floatle",
+                "name": "motor_mA",
+                "offset": 16,
+                "length": 1,
+                "offsetbit": 0,
+                "scale": "1",
+                "mask": ""
+            }
+        ],
+        "swap1": "swap16",
+        "swap2": "",
+        "swap3": "",
+        "swap1Type": "swap",
+        "swap2Type": "swap",
+        "swap3Type": "swap",
+        "msgProperty": "",
+        "msgPropertyType": "",
+        "resultType": "keyvalue",
+        "resultTypeType": "",
+        "multipleResult": false,
+        "fanOutMultipleResult": false,
+        "setTopic": false,
+        "outputs": 1,
+        "x": 730,
+        "y": 620,
+        "wires": [
+            [
+                "da801bb2e618c5a0"
+            ]
+        ]
+    },
+    {
+        "id": "c0eeb8449b8a850c",
+        "type": "debug",
+        "z": "ac978cd8aec44371",
+        "name": "debug 15",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1260,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "f49821d1ade651d8",
+        "type": "influxdb batch",
+        "z": "ac978cd8aec44371",
+        "influxdb": "influxconfig",
+        "precision": "",
+        "retentionPolicy": "",
+        "name": "Influx Batch",
+        "database": "database",
+        "precisionV18FluxV20": "ms",
+        "retentionPolicyV18Flux": "",
+        "org": "Scion",
+        "bucket": "reactor-monitoring",
+        "x": 1290,
+        "y": 520,
+        "wires": []
+    },
+    {
+        "id": "5b33d3a0df2de5e0",
+        "type": "modbus-client",
+        "name": "ACM1",
+        "clienttype": "simpleser",
+        "bufferCommands": true,
+        "stateLogEnabled": false,
+        "queueLogEnabled": false,
+        "failureLogEnabled": true,
+        "tcpHost": "127.0.0.1",
+        "tcpPort": "502",
+        "tcpType": "DEFAULT",
+        "serialPort": "/dev/ttyACM1",
+        "serialType": "RTU-BUFFERD",
+        "serialBaudrate": "115200",
+        "serialDatabits": "8",
+        "serialStopbits": "1",
+        "serialParity": "none",
+        "serialConnectionDelay": "100",
+        "serialAsciiResponseStartDelimiter": "0x3A",
+        "unit_id": "1",
+        "commandDelay": "1",
+        "clientTimeout": "1000",
+        "reconnectOnTimeout": true,
+        "reconnectTimeout": "2000",
+        "parallelUnitIdsAllowed": true,
+        "showErrors": false,
+        "showWarnings": true,
+        "showLogs": true
+    },
+    {
+        "id": "a1f84dec681b9b29",
+        "type": "modbus-client",
+        "name": "ACM3",
+        "clienttype": "simpleser",
+        "bufferCommands": true,
+        "stateLogEnabled": false,
+        "queueLogEnabled": false,
+        "failureLogEnabled": true,
+        "tcpHost": "127.0.0.1",
+        "tcpPort": "502",
+        "tcpType": "DEFAULT",
+        "serialPort": "/dev/ttyACM3",
+        "serialType": "RTU-BUFFERD",
+        "serialBaudrate": "115200",
+        "serialDatabits": "8",
+        "serialStopbits": "1",
+        "serialParity": "none",
+        "serialConnectionDelay": "100",
+        "serialAsciiResponseStartDelimiter": "0x3A",
+        "unit_id": "1",
+        "commandDelay": "1",
+        "clientTimeout": "1000",
+        "reconnectOnTimeout": true,
+        "reconnectTimeout": "2000",
+        "parallelUnitIdsAllowed": true,
+        "showErrors": false,
+        "showWarnings": true,
+        "showLogs": true
+    },
+    {
+        "id": "ef99d96f993392a8",
+        "type": "modbus-client",
+        "name": "ACM2",
+        "clienttype": "simpleser",
+        "bufferCommands": true,
+        "stateLogEnabled": false,
+        "queueLogEnabled": false,
+        "failureLogEnabled": true,
+        "tcpHost": "127.0.0.1",
+        "tcpPort": "502",
+        "tcpType": "DEFAULT",
+        "serialPort": "/dev/ttyACM2",
+        "serialType": "RTU",
+        "serialBaudrate": "115200",
+        "serialDatabits": "8",
+        "serialStopbits": "1",
+        "serialParity": "none",
+        "serialConnectionDelay": "100",
+        "serialAsciiResponseStartDelimiter": "0x3A",
+        "unit_id": "1",
+        "commandDelay": "1",
+        "clientTimeout": "1000",
+        "reconnectOnTimeout": true,
+        "reconnectTimeout": "2000",
+        "parallelUnitIdsAllowed": true,
+        "showErrors": false,
+        "showWarnings": true,
+        "showLogs": true
+    },
+    {
+        "id": "mbclient1",
+        "type": "modbus-client",
+        "name": "ACM0",
+        "clienttype": "serial",
+        "bufferCommands": false,
+        "stateLogEnabled": true,
+        "queueLogEnabled": false,
+        "failureLogEnabled": true,
+        "tcpHost": "127.0.0.1",
+        "tcpPort": "502",
+        "tcpType": "DEFAULT",
+        "serialPort": "/dev/ttyACM0",
+        "serialType": "RTU",
+        "serialBaudrate": "115200",
+        "serialDatabits": "8",
+        "serialStopbits": "1",
+        "serialParity": "none",
+        "serialConnectionDelay": "100",
+        "serialAsciiResponseStartDelimiter": "",
+        "unit_id": "",
+        "commandDelay": "1",
+        "clientTimeout": "1000",
+        "reconnectOnTimeout": false,
+        "reconnectTimeout": "2000",
+        "parallelUnitIdsAllowed": false,
+        "showErrors": false,
+        "showWarnings": true,
+        "showLogs": true
+    },
+    {
+        "id": "d9a29a25883258e7",
+        "type": "influxdb",
+        "hostname": "127.0.0.1",
+        "port": "8086",
+        "protocol": "http",
+        "database": "reactor_db",
+        "name": "Local InfluxDB",
+        "usetls": false,
+        "tls": "",
+        "influxdbVersion": "2.0",
+        "url": "http://localhost:8086",
+        "timeout": "",
+        "rejectUnauthorized": false
+    },
+    {
+        "id": "influxconfig",
+        "type": "influxdb",
+        "hostname": "127.0.0.1",
+        "port": "8086",
+        "protocol": "http",
+        "database": "database",
+        "name": "Scion InfluxDB",
+        "usetls": false,
+        "tls": "",
+        "influxdbVersion": "2.0",
+        "url": "https://influxdb.scionresearch.com",
+        "timeout": "10",
+        "rejectUnauthorized": false
+    }
+]

@@ -37,8 +37,8 @@ void setup() {
     Serial1.setTX(PIN_UART_TX);
     Serial1.setRX(PIN_UART_RX);
     // END DEBUG
-
-    modbus.configureHoldingRegisters(holdingRegisters, 10);
+    sensors.unit_id = MODBUS_UNIT_ID;  // Set unit ID in struct
+    modbus.configureHoldingRegisters(holdingRegisters, 100);
     modbus.begin(MODBUS_SLAVE_ID, MODBUS_BAUD);        // Modbus slave ID 1, baud rate 115200
     adcLastMillis = millis();
     rpm_lastMicros = micros();
@@ -54,7 +54,7 @@ void setup() {
 void setup1() {
     sensorMutex = xSemaphoreCreateMutex();
     pinMode(PIN_PULSE_INPUT, INPUT_PULLUP);
-    attachInterrupt(PIN_PULSE_INPUT, pulse_ISR, FALLING);
+    attachInterrupt(PIN_PULSE_INPUT, pulse_ISR, RISING);
     if (debug) SerialDebug.println("Core 1 setup complete.");
     core1_ready = true;
     while (!core0_ready);
@@ -77,10 +77,14 @@ void loop1() {
 // ----------------------- ISR callbacks -----------------------
 
 void pulse_ISR(void) {
+    delayMicroseconds(ISR_WAIT_TIME);  // Wait for 10ms to avoid false triggers
+    if (digitalRead(PIN_PULSE_INPUT) == LOW) return;  // Ignore if the pin is low
     rpm_timestamp = micros();
-    rpm_period = rpm_timestamp - rpm_lastMicros;
+    float temp_period = rpm_timestamp - rpm_lastMicros;
+    if (temp_period < MIN_RPM_PERIOD) return;  // Ignore very short pulses
+    rpm_period = temp_period;
     rpm_lastMicros = rpm_timestamp;
-    if (rpm_period < 60000000) rpm = (1000000.0 / rpm_period) * 60;
+    if (rpm_period < 60 * PULSE_TIMEOUT) rpm = (1000000.0 / rpm_period) * 60;
     else rpm = 0.0;  // Ignore pulse durations longer than 60 seconds
     rpmUpdated = true;
 }

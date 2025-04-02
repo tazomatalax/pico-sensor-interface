@@ -23,6 +23,7 @@
 // Modbus
 #define MODBUS_SLAVE_ID 1
 #define MODBUS_BAUD 115200
+#define MODBUS_UNIT_ID 4            // Unit ID in holding register for ident
 
 // 4-2-mA calcs
 #define SAMPLES  255                // Number of samples per channel measurement (about 100µs per sample)
@@ -83,7 +84,13 @@
 #define MOTOR_INTERVAL 500
 
 // Stirrer RPM pulse timeout (microseconds)
-#define PULSE_TIMEOUT 10000000  // 10 seconds
+#define PULSE_TIMEOUT 20000000  // 20 seconds
+
+// Minimum pulse rpm_period
+#define MIN_RPM_PERIOD 1000000 // 1 second
+
+// ISR wait time (checks for brief pulse and ignores it)
+#define ISR_WAIT_TIME 10000   // 10 milliseconds
 
 // Status LED on/off interval (milliseconds)
 #define LED_INTERVAL 500
@@ -100,6 +107,7 @@ struct sensors_t {
     float ch2_mA;
     float rpm;
     float motor_mA;
+    uint16_t unit_id;
 };
 
 sensors_t sensors;
