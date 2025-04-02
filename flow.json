@@ -1,5 +1,13 @@
 [
     {
+        "id": "6c900aff9d56898f",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": true,
+        "info": "",
+        "env": []
+    },
+    {
         "id": "ac978cd8aec44371",
         "type": "tab",
         "label": "Flow 2",
@@ -8,10 +16,1177 @@
         "env": []
     },
     {
+        "id": "1389333f9aa0bc16",
+        "type": "tab",
+        "label": "Modbus Gas Counter",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "c7f58bd6e7679c23",
+        "type": "junction",
+        "z": "6c900aff9d56898f",
+        "x": 540,
+        "y": 520,
+        "wires": [
+            [
+                "c8f6b8115e7825a1",
+                "e18ed1e7523f4a79",
+                "216a4d4bca74cbdc"
+            ]
+        ]
+    },
+    {
+        "id": "8031e60f3dcb4ea1",
+        "type": "modbus-client",
+        "name": "Serial 0",
+        "clienttype": "simpleser",
+        "bufferCommands": true,
+        "stateLogEnabled": false,
+        "queueLogEnabled": false,
+        "failureLogEnabled": true,
+        "tcpHost": "127.0.0.1",
+        "tcpPort": "502",
+        "tcpType": "DEFAULT",
+        "serialPort": "/dev/ttyS0",
+        "serialType": "RTU-BUFFERD",
+        "serialBaudrate": "115200",
+        "serialDatabits": "8",
+        "serialStopbits": "1",
+        "serialParity": "none",
+        "serialConnectionDelay": "100",
+        "serialAsciiResponseStartDelimiter": "0x3A",
+        "unit_id": 1,
+        "commandDelay": 1,
+        "clientTimeout": 1000,
+        "reconnectOnTimeout": false,
+        "reconnectTimeout": 100,
+        "parallelUnitIdsAllowed": false,
+        "showErrors": true,
+        "showWarnings": true,
+        "showLogs": true
+    },
+    {
+        "id": "modbus-server",
+        "type": "modbus-client",
+        "name": "RS485",
+        "clienttype": "serial",
+        "bufferCommands": true,
+        "stateLogEnabled": true,
+        "queueLogEnabled": true,
+        "failureLogEnabled": true,
+        "tcpHost": "127.0.0.1",
+        "tcpPort": "502",
+        "serialPort": "/dev/ttyUSB0",
+        "serialType": "RTU-BUFFERD",
+        "serialBaudrate": "9600",
+        "serialDatabits": "8",
+        "serialStopbits": "1",
+        "serialParity": "none",
+        "serialConnectionDelay": "100",
+        "serialAsciiResponseStartDelimiter": "",
+        "unit_id": 1,
+        "commandDelay": 1,
+        "clientTimeout": 1000,
+        "reconnectOnTimeout": false,
+        "reconnectTimeout": 2000,
+        "parallelUnitIdsAllowed": false,
+        "showErrors": false,
+        "showWarnings": true,
+        "showLogs": true
+    },
+    {
+        "id": "17fa2ebfd6e7a3c8",
+        "type": "ui_tab",
+        "name": "Reactor",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "5ae5c0e0bbc69168",
+        "type": "ui_group",
+        "name": "pH",
+        "tab": "17fa2ebfd6e7a3c8",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "2a129fe40b8c9a16",
+        "type": "ui_group",
+        "name": "Temp",
+        "tab": "17fa2ebfd6e7a3c8",
+        "order": 2,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "calibration_group",
+        "type": "ui_group",
+        "name": "Calibration",
+        "tab": "17fa2ebfd6e7a3c8",
+        "order": 3,
+        "disp": true,
+        "width": "6"
+    },
+    {
+        "id": "3665fa5e334434b5",
+        "type": "ui_base",
+        "theme": {
+            "name": "theme-light",
+            "lightTheme": {
+                "default": "#0094CE",
+                "baseColor": "#0094CE",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": false
+            },
+            "darkTheme": {
+                "default": "#097479",
+                "baseColor": "#097479",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": false
+            },
+            "customTheme": {
+                "name": "Untitled Theme 1",
+                "default": "#4B7930",
+                "baseColor": "#4B7930",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+            },
+            "themeState": {
+                "base-color": {
+                    "default": "#0094CE",
+                    "value": "#0094CE",
+                    "edited": false
+                },
+                "page-titlebar-backgroundColor": {
+                    "value": "#0094CE",
+                    "edited": false
+                },
+                "page-backgroundColor": {
+                    "value": "#fafafa",
+                    "edited": false
+                },
+                "page-sidebar-backgroundColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "group-textColor": {
+                    "value": "#1bbfff",
+                    "edited": false
+                },
+                "group-borderColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "group-backgroundColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "widget-textColor": {
+                    "value": "#111111",
+                    "edited": false
+                },
+                "widget-backgroundColor": {
+                    "value": "#0094ce",
+                    "edited": false
+                },
+                "widget-borderColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "base-font": {
+                    "value": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+                }
+            },
+            "angularTheme": {
+                "primary": "indigo",
+                "accents": "blue",
+                "warn": "red",
+                "background": "grey",
+                "palette": "light"
+            }
+        },
+        "site": {
+            "name": "Node-RED Dashboard",
+            "hideToolbar": "false",
+            "allowSwipe": "false",
+            "lockMenu": "false",
+            "allowTempTheme": "true",
+            "dateFormat": "DD/MM/YYYY",
+            "sizes": {
+                "sx": 48,
+                "sy": 48,
+                "gx": 6,
+                "gy": 6,
+                "cx": 6,
+                "cy": 6,
+                "px": 0,
+                "py": 0
+            }
+        }
+    },
+    {
+        "id": "mbclient1",
+        "type": "modbus-client",
+        "name": "ACM0",
+        "clienttype": "serial",
+        "bufferCommands": false,
+        "stateLogEnabled": true,
+        "queueLogEnabled": false,
+        "failureLogEnabled": true,
+        "tcpHost": "127.0.0.1",
+        "tcpPort": "502",
+        "tcpType": "DEFAULT",
+        "serialPort": "/dev/ttyACM0",
+        "serialType": "RTU",
+        "serialBaudrate": "115200",
+        "serialDatabits": "8",
+        "serialStopbits": "1",
+        "serialParity": "none",
+        "serialConnectionDelay": "100",
+        "serialAsciiResponseStartDelimiter": "",
+        "unit_id": "",
+        "commandDelay": "1",
+        "clientTimeout": "1000",
+        "reconnectOnTimeout": false,
+        "reconnectTimeout": "2000",
+        "parallelUnitIdsAllowed": false,
+        "showErrors": false,
+        "showWarnings": true,
+        "showLogs": true
+    },
+    {
+        "id": "a680a93aa70ad8b3",
+        "type": "serial-port",
+        "name": "test",
+        "serialport": "/dev/ttyACM2",
+        "serialbaud": "115200",
+        "databits": "8",
+        "parity": "none",
+        "stopbits": "1",
+        "waitfor": "",
+        "dtr": "none",
+        "rts": "none",
+        "cts": "none",
+        "dsr": "none",
+        "newline": "\\n",
+        "bin": "false",
+        "out": "char",
+        "addchar": "",
+        "responsetimeout": "10000"
+    },
+    {
+        "id": "d9a29a25883258e7",
+        "type": "influxdb",
+        "hostname": "127.0.0.1",
+        "port": "8086",
+        "protocol": "http",
+        "database": "reactor_db",
+        "name": "Local InfluxDB",
+        "usetls": false,
+        "tls": "",
+        "influxdbVersion": "2.0",
+        "url": "http://localhost:8086",
+        "timeout": "",
+        "rejectUnauthorized": false
+    },
+    {
+        "id": "influxconfig",
+        "type": "influxdb",
+        "hostname": "127.0.0.1",
+        "port": "8086",
+        "protocol": "http",
+        "database": "database",
+        "name": "Scion InfluxDB",
+        "usetls": false,
+        "tls": "",
+        "influxdbVersion": "2.0",
+        "url": "https://influxdb.scionresearch.com",
+        "timeout": "10",
+        "rejectUnauthorized": false
+    },
+    {
+        "id": "ef99d96f993392a8",
+        "type": "modbus-client",
+        "name": "ACM2",
+        "clienttype": "simpleser",
+        "bufferCommands": true,
+        "stateLogEnabled": false,
+        "queueLogEnabled": false,
+        "failureLogEnabled": true,
+        "tcpHost": "127.0.0.1",
+        "tcpPort": "502",
+        "tcpType": "DEFAULT",
+        "serialPort": "/dev/ttyACM2",
+        "serialType": "RTU",
+        "serialBaudrate": "115200",
+        "serialDatabits": "8",
+        "serialStopbits": "1",
+        "serialParity": "none",
+        "serialConnectionDelay": "100",
+        "serialAsciiResponseStartDelimiter": "0x3A",
+        "unit_id": "1",
+        "commandDelay": "1",
+        "clientTimeout": "1000",
+        "reconnectOnTimeout": true,
+        "reconnectTimeout": "2000",
+        "parallelUnitIdsAllowed": true,
+        "showErrors": false,
+        "showWarnings": true,
+        "showLogs": true
+    },
+    {
+        "id": "5b33d3a0df2de5e0",
+        "type": "modbus-client",
+        "name": "ACM1",
+        "clienttype": "simpleser",
+        "bufferCommands": true,
+        "stateLogEnabled": false,
+        "queueLogEnabled": false,
+        "failureLogEnabled": true,
+        "tcpHost": "127.0.0.1",
+        "tcpPort": "502",
+        "tcpType": "DEFAULT",
+        "serialPort": "/dev/ttyACM1",
+        "serialType": "RTU-BUFFERD",
+        "serialBaudrate": "115200",
+        "serialDatabits": "8",
+        "serialStopbits": "1",
+        "serialParity": "none",
+        "serialConnectionDelay": "100",
+        "serialAsciiResponseStartDelimiter": "0x3A",
+        "unit_id": "1",
+        "commandDelay": "1",
+        "clientTimeout": "1000",
+        "reconnectOnTimeout": true,
+        "reconnectTimeout": "2000",
+        "parallelUnitIdsAllowed": true,
+        "showErrors": false,
+        "showWarnings": true,
+        "showLogs": true
+    },
+    {
+        "id": "a1f84dec681b9b29",
+        "type": "modbus-client",
+        "name": "ACM3",
+        "clienttype": "simpleser",
+        "bufferCommands": true,
+        "stateLogEnabled": false,
+        "queueLogEnabled": false,
+        "failureLogEnabled": true,
+        "tcpHost": "127.0.0.1",
+        "tcpPort": "502",
+        "tcpType": "DEFAULT",
+        "serialPort": "/dev/ttyACM3",
+        "serialType": "RTU-BUFFERD",
+        "serialBaudrate": "115200",
+        "serialDatabits": "8",
+        "serialStopbits": "1",
+        "serialParity": "none",
+        "serialConnectionDelay": "100",
+        "serialAsciiResponseStartDelimiter": "0x3A",
+        "unit_id": "1",
+        "commandDelay": "1",
+        "clientTimeout": "1000",
+        "reconnectOnTimeout": true,
+        "reconnectTimeout": "2000",
+        "parallelUnitIdsAllowed": true,
+        "showErrors": false,
+        "showWarnings": true,
+        "showLogs": true
+    },
+    {
+        "id": "c8f6b8115e7825a1",
+        "type": "modbus-flex-getter",
+        "z": "6c900aff9d56898f",
+        "name": "",
+        "showStatusActivities": true,
+        "showErrors": true,
+        "showWarnings": true,
+        "logIOActivities": false,
+        "server": "8031e60f3dcb4ea1",
+        "useIOFile": false,
+        "ioFile": "",
+        "useIOForPayload": false,
+        "emptyMsgOnFail": false,
+        "keepMsgProperties": true,
+        "delayOnStart": false,
+        "startDelayTime": "",
+        "x": 730,
+        "y": 480,
+        "wires": [
+            [
+                "70cf43b58a240f50",
+                "37c38d6782068e98"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "7bf32269fc4e10e2",
+        "type": "function",
+        "z": "6c900aff9d56898f",
+        "name": "Unit 1",
+        "func": "if (msg.payload) {\n    msg.payload = { 'fc': 3, 'unitid': 1, 'address': 0, 'quantity': 19 }\n    return msg;\n}",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 410,
+        "y": 440,
+        "wires": [
+            [
+                "c7f58bd6e7679c23"
+            ]
+        ]
+    },
+    {
+        "id": "9159aab2b265d102",
+        "type": "inject",
+        "z": "6c900aff9d56898f",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "true",
+        "payloadType": "bool",
+        "x": 190,
+        "y": 420,
+        "wires": [
+            [
+                "7bf32269fc4e10e2"
+            ]
+        ]
+    },
+    {
+        "id": "70cf43b58a240f50",
+        "type": "debug",
+        "z": "6c900aff9d56898f",
+        "name": "debug 1",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1180,
+        "y": 420,
+        "wires": []
+    },
+    {
+        "id": "33069d683e935a18",
+        "type": "rpi-gpio out",
+        "z": "6c900aff9d56898f",
+        "name": "",
+        "pin": "17",
+        "set": true,
+        "level": "0",
+        "freq": "",
+        "out": "out",
+        "bcm": true,
+        "x": 920,
+        "y": 560,
+        "wires": []
+    },
+    {
+        "id": "e18ed1e7523f4a79",
+        "type": "function",
+        "z": "6c900aff9d56898f",
+        "name": "DE high",
+        "func": "msg.payload = 1;\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 740,
+        "y": 560,
+        "wires": [
+            [
+                "33069d683e935a18"
+            ]
+        ]
+    },
+    {
+        "id": "da246e33543bc5f0",
+        "type": "function",
+        "z": "6c900aff9d56898f",
+        "name": "DE low",
+        "func": "msg.payload = 0;\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 780,
+        "y": 620,
+        "wires": [
+            [
+                "33069d683e935a18"
+            ]
+        ]
+    },
+    {
+        "id": "216a4d4bca74cbdc",
+        "type": "delay",
+        "z": "6c900aff9d56898f",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "1",
+        "timeoutUnits": "milliseconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 630,
+        "y": 620,
+        "wires": [
+            [
+                "da246e33543bc5f0"
+            ]
+        ]
+    },
+    {
+        "id": "37c38d6782068e98",
+        "type": "buffer-parser",
+        "z": "6c900aff9d56898f",
+        "name": "",
+        "data": "payload",
+        "dataType": "msg",
+        "specification": "spec",
+        "specificationType": "ui",
+        "items": [
+            {
+                "type": "floatle",
+                "name": "volume",
+                "offset": 0,
+                "length": 1,
+                "offsetbit": 0,
+                "scale": "1",
+                "mask": ""
+            },
+            {
+                "type": "floatle",
+                "name": "flow",
+                "offset": 4,
+                "length": 1,
+                "offsetbit": 0,
+                "scale": "1",
+                "mask": ""
+            },
+            {
+                "type": "floatle",
+                "name": "temperature",
+                "offset": 8,
+                "length": 1,
+                "offsetbit": 0,
+                "scale": "1",
+                "mask": ""
+            },
+            {
+                "type": "floatle",
+                "name": "pressure",
+                "offset": 12,
+                "length": 1,
+                "offsetbit": 0,
+                "scale": "1",
+                "mask": ""
+            },
+            {
+                "type": "int32le",
+                "name": "timestamp",
+                "offset": 16,
+                "length": 1,
+                "offsetbit": 0,
+                "scale": "1",
+                "mask": ""
+            },
+            {
+                "type": "floatle",
+                "name": "psu_volts",
+                "offset": 20,
+                "length": 1,
+                "offsetbit": 0,
+                "scale": "1",
+                "mask": ""
+            },
+            {
+                "type": "floatle",
+                "name": "batt_volts",
+                "offset": 24,
+                "length": 1,
+                "offsetbit": 0,
+                "scale": "1",
+                "mask": ""
+            },
+            {
+                "type": "string",
+                "name": "unit_ID",
+                "offset": 28,
+                "length": 10,
+                "offsetbit": 0,
+                "scale": "1",
+                "mask": ""
+            }
+        ],
+        "swap1": "swap16",
+        "swap2": "",
+        "swap3": "",
+        "swap1Type": "swap",
+        "swap2Type": "swap",
+        "swap3Type": "swap",
+        "msgProperty": "payload",
+        "msgPropertyType": "str",
+        "resultType": "value",
+        "resultTypeType": "return",
+        "multipleResult": false,
+        "fanOutMultipleResult": false,
+        "setTopic": true,
+        "outputs": 1,
+        "x": 950,
+        "y": 500,
+        "wires": [
+            [
+                "70cf43b58a240f50",
+                "91636ecda4a5200b"
+            ]
+        ]
+    },
+    {
+        "id": "2d3f68a2e43d6dc0",
+        "type": "rpi-gpio in",
+        "z": "6c900aff9d56898f",
+        "name": "Trigger 1",
+        "pin": "0",
+        "intype": "tri",
+        "debounce": "25",
+        "read": false,
+        "bcm": true,
+        "x": 180,
+        "y": 480,
+        "wires": [
+            [
+                "7bf32269fc4e10e2"
+            ]
+        ]
+    },
+    {
+        "id": "91636ecda4a5200b",
+        "type": "file",
+        "z": "6c900aff9d56898f",
+        "name": "",
+        "filename": "\"/home/admin/FlowCounterLogs/unit_ID_\" & msg.payload[7] & \".csv\"",
+        "filenameType": "jsonata",
+        "appendNewline": true,
+        "createDir": false,
+        "overwriteFile": "false",
+        "encoding": "none",
+        "x": 1160,
+        "y": 560,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "3080df2b0f87b256",
+        "type": "function",
+        "z": "6c900aff9d56898f",
+        "name": "Unit 2",
+        "func": "if (msg.payload) {\n    msg.payload = { 'fc': 3, 'unitid': 2, 'address': 0, 'quantity': 19 }\n    return msg;\n}",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 410,
+        "y": 540,
+        "wires": [
+            [
+                "c7f58bd6e7679c23"
+            ]
+        ]
+    },
+    {
+        "id": "31abc2f6633194e8",
+        "type": "inject",
+        "z": "6c900aff9d56898f",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "true",
+        "payloadType": "bool",
+        "x": 190,
+        "y": 540,
+        "wires": [
+            [
+                "3080df2b0f87b256"
+            ]
+        ]
+    },
+    {
+        "id": "05842cfa2fdc3bb0",
+        "type": "rpi-gpio in",
+        "z": "6c900aff9d56898f",
+        "name": "Trigger 2",
+        "pin": "1",
+        "intype": "tri",
+        "debounce": "25",
+        "read": false,
+        "bcm": true,
+        "x": 180,
+        "y": 580,
+        "wires": [
+            [
+                "3080df2b0f87b256"
+            ]
+        ]
+    },
+    {
+        "id": "4d87b28a2854d8cf",
+        "type": "function",
+        "z": "6c900aff9d56898f",
+        "name": "Unit 3",
+        "func": "if (msg.payload) {\n    msg.payload = { 'fc': 3, 'unitid': 3, 'address': 0, 'quantity': 19 }\n    return msg;\n}",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 410,
+        "y": 640,
+        "wires": [
+            [
+                "c7f58bd6e7679c23"
+            ]
+        ]
+    },
+    {
+        "id": "f9685f1205fe55bf",
+        "type": "inject",
+        "z": "6c900aff9d56898f",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "true",
+        "payloadType": "bool",
+        "x": 190,
+        "y": 640,
+        "wires": [
+            [
+                "4d87b28a2854d8cf"
+            ]
+        ]
+    },
+    {
+        "id": "bb412829d3d460c5",
+        "type": "rpi-gpio in",
+        "z": "6c900aff9d56898f",
+        "name": "Trigger 3",
+        "pin": "2",
+        "intype": "tri",
+        "debounce": "25",
+        "read": false,
+        "bcm": true,
+        "x": 180,
+        "y": 680,
+        "wires": [
+            [
+                "4d87b28a2854d8cf"
+            ]
+        ]
+    },
+    {
+        "id": "56652e00910ab055",
+        "type": "function",
+        "z": "6c900aff9d56898f",
+        "name": "Unit 4",
+        "func": "if (msg.payload) {\n    msg.payload = { 'fc': 3, 'unitid': 4, 'address': 0, 'quantity': 19 }\n    return msg;\n}",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 410,
+        "y": 740,
+        "wires": [
+            [
+                "c7f58bd6e7679c23"
+            ]
+        ]
+    },
+    {
+        "id": "a066d39e92ad5616",
+        "type": "inject",
+        "z": "6c900aff9d56898f",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "true",
+        "payloadType": "bool",
+        "x": 190,
+        "y": 740,
+        "wires": [
+            [
+                "56652e00910ab055"
+            ]
+        ]
+    },
+    {
+        "id": "d81c65a80dc119f0",
+        "type": "rpi-gpio in",
+        "z": "6c900aff9d56898f",
+        "name": "Trigger 4",
+        "pin": "3",
+        "intype": "tri",
+        "debounce": "25",
+        "read": false,
+        "bcm": true,
+        "x": 180,
+        "y": 780,
+        "wires": [
+            [
+                "56652e00910ab055"
+            ]
+        ]
+    },
+    {
+        "id": "7d014796be50cbac",
+        "type": "function",
+        "z": "6c900aff9d56898f",
+        "name": "Unit 5",
+        "func": "if (msg.payload) {\n    msg.payload = { 'fc': 3, 'unitid': 5, 'address': 0, 'quantity': 19 }\n    return msg;\n}",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 410,
+        "y": 840,
+        "wires": [
+            [
+                "c7f58bd6e7679c23"
+            ]
+        ]
+    },
+    {
+        "id": "a0ce4b0cacb8ed38",
+        "type": "inject",
+        "z": "6c900aff9d56898f",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "true",
+        "payloadType": "bool",
+        "x": 190,
+        "y": 840,
+        "wires": [
+            [
+                "7d014796be50cbac"
+            ]
+        ]
+    },
+    {
+        "id": "b3d9d7f6a791237d",
+        "type": "rpi-gpio in",
+        "z": "6c900aff9d56898f",
+        "name": "Trigger 5",
+        "pin": "4",
+        "intype": "tri",
+        "debounce": "25",
+        "read": false,
+        "bcm": true,
+        "x": 180,
+        "y": 880,
+        "wires": [
+            [
+                "7d014796be50cbac"
+            ]
+        ]
+    },
+    {
+        "id": "b7e8a00e93d527bc",
+        "type": "function",
+        "z": "6c900aff9d56898f",
+        "name": "Unit 6",
+        "func": "if (msg.payload) {\n    msg.payload = { 'fc': 3, 'unitid': 6, 'address': 0, 'quantity': 19 }\n    return msg;\n}",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 410,
+        "y": 940,
+        "wires": [
+            [
+                "c7f58bd6e7679c23"
+            ]
+        ]
+    },
+    {
+        "id": "d2ea20e6122b9ac9",
+        "type": "inject",
+        "z": "6c900aff9d56898f",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "true",
+        "payloadType": "bool",
+        "x": 190,
+        "y": 940,
+        "wires": [
+            [
+                "b7e8a00e93d527bc"
+            ]
+        ]
+    },
+    {
+        "id": "af0d5096cc3eca32",
+        "type": "rpi-gpio in",
+        "z": "6c900aff9d56898f",
+        "name": "Trigger 6",
+        "pin": "5",
+        "intype": "tri",
+        "debounce": "25",
+        "read": false,
+        "bcm": true,
+        "x": 180,
+        "y": 980,
+        "wires": [
+            [
+                "b7e8a00e93d527bc"
+            ]
+        ]
+    },
+    {
+        "id": "10dc28d912fad79e",
+        "type": "function",
+        "z": "6c900aff9d56898f",
+        "name": "Unit 7",
+        "func": "if (msg.payload) {\n    msg.payload = { 'fc': 3, 'unitid': 7, 'address': 0, 'quantity': 19 }\n    return msg;\n}",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 410,
+        "y": 1040,
+        "wires": [
+            [
+                "c7f58bd6e7679c23"
+            ]
+        ]
+    },
+    {
+        "id": "e722d18521bb1e06",
+        "type": "inject",
+        "z": "6c900aff9d56898f",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "true",
+        "payloadType": "bool",
+        "x": 190,
+        "y": 1040,
+        "wires": [
+            [
+                "10dc28d912fad79e"
+            ]
+        ]
+    },
+    {
+        "id": "8ec86d895e756810",
+        "type": "rpi-gpio in",
+        "z": "6c900aff9d56898f",
+        "name": "Trigger 7",
+        "pin": "6",
+        "intype": "tri",
+        "debounce": "25",
+        "read": false,
+        "bcm": true,
+        "x": 180,
+        "y": 1080,
+        "wires": [
+            [
+                "10dc28d912fad79e"
+            ]
+        ]
+    },
+    {
+        "id": "51976245a47d055b",
+        "type": "function",
+        "z": "6c900aff9d56898f",
+        "name": "Unit 8",
+        "func": "if (msg.payload) {\n    msg.payload = { 'fc': 3, 'unitid': 8, 'address': 0, 'quantity': 19 }\n    return msg;\n}",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 410,
+        "y": 1140,
+        "wires": [
+            [
+                "c7f58bd6e7679c23"
+            ]
+        ]
+    },
+    {
+        "id": "8f153c654742e9f4",
+        "type": "inject",
+        "z": "6c900aff9d56898f",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "true",
+        "payloadType": "bool",
+        "x": 190,
+        "y": 1140,
+        "wires": [
+            [
+                "51976245a47d055b"
+            ]
+        ]
+    },
+    {
+        "id": "f2bc1f66a9b4b0f7",
+        "type": "rpi-gpio in",
+        "z": "6c900aff9d56898f",
+        "name": "Trigger 8",
+        "pin": "7",
+        "intype": "tri",
+        "debounce": "25",
+        "read": false,
+        "bcm": true,
+        "x": 180,
+        "y": 1180,
+        "wires": [
+            [
+                "51976245a47d055b"
+            ]
+        ]
+    },
+    {
         "id": "237bcd4b6f3ff0da",
         "type": "modbus-flex-getter",
         "z": "ac978cd8aec44371",
-        "name": "",
+        "name": "Read Raw Modbus Data",
         "showStatusActivities": false,
         "showErrors": false,
         "showWarnings": true,
@@ -24,8 +1199,8 @@
         "keepMsgProperties": false,
         "delayOnStart": false,
         "startDelayTime": "",
-        "x": 490,
-        "y": 180,
+        "x": 550,
+        "y": 220,
         "wires": [
             [
                 "4da9d0eedf82a427",
@@ -48,15 +1223,15 @@
                 "vt": "str"
             }
         ],
-        "repeat": "5",
+        "repeat": "7.5",
         "crontab": "",
         "once": true,
         "onceDelay": "1",
         "topic": "",
         "payload": "",
         "payloadType": "date",
-        "x": 190,
-        "y": 100,
+        "x": 210,
+        "y": 94.28571428571422,
         "wires": [
             [
                 "a9634b12787cd3d4",
@@ -69,15 +1244,15 @@
         "type": "function",
         "z": "ac978cd8aec44371",
         "name": "Modbus Request Setup",
-        "func": "//Store unit id here\nmsg.unitid = 1; \nmsg.payload = {\n    'fc': 3,\n    'unitid': 1,\n    'address': 0,\n    'quantity': 10 \n};\nreturn msg;",
+        "func": "//Store unit id here\nmsg.unitid = 1; \nmsg.payload = {\n    'fc': 3,\n    'unitid': 1,\n    'address': 0,\n    'quantity': 11 \n};\nreturn msg;",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 290,
-        "y": 260,
+        "x": 250,
+        "y": 171.42857142857133,
         "wires": [
             [
                 "237bcd4b6f3ff0da"
@@ -155,6 +1330,15 @@
                 "offsetbit": 0,
                 "scale": "1",
                 "mask": ""
+            },
+            {
+                "type": "uint16le",
+                "name": "reactor_number",
+                "offset": 20,
+                "length": 1,
+                "offsetbit": 0,
+                "scale": "1",
+                "mask": ""
             }
         ],
         "swap1": "swap16",
@@ -171,11 +1355,12 @@
         "fanOutMultipleResult": false,
         "setTopic": false,
         "outputs": 1,
-        "x": 730,
-        "y": 200,
+        "x": 790,
+        "y": 220,
         "wires": [
             [
-                "da801bb2e618c5a0"
+                "da801bb2e618c5a0",
+                "87759633c5d9f7f2"
             ]
         ]
     },
@@ -191,8 +1376,8 @@
         "complete": "false",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1000,
-        "y": 140,
+        "x": 780,
+        "y": 260,
         "wires": []
     },
     {
@@ -212,8 +1397,8 @@
         "drop": false,
         "allowrate": false,
         "outputs": 1,
-        "x": 170,
-        "y": 340,
+        "x": 210,
+        "y": 248.5714285714285,
         "wires": [
             [
                 "bb5ed0db02b4330a",
@@ -226,7 +1411,7 @@
         "type": "function",
         "z": "ac978cd8aec44371",
         "name": "Modbus Request Setup",
-        "func": "//Store unit id here\nmsg.unitid = 2;\nmsg.payload = {\n    'fc': 3,\n    'unitid': 1,\n    'address': 0,\n    'quantity': 10 \n};\nreturn msg;",
+        "func": "//Store unit id here\nmsg.unitid = 2;\nmsg.payload = {\n    'fc': 3,\n    'unitid': 1,\n    'address': 0,\n    'quantity': 11\n};\nreturn msg;",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
@@ -234,7 +1419,7 @@
         "finalize": "",
         "libs": [],
         "x": 250,
-        "y": 420,
+        "y": 325.71428571428567,
         "wires": [
             [
                 "26409017be2e8b10"
@@ -258,8 +1443,8 @@
         "keepMsgProperties": true,
         "delayOnStart": false,
         "startDelayTime": "",
-        "x": 510,
-        "y": 360,
+        "x": 550,
+        "y": 313.3333333333333,
         "wires": [
             [
                 "b6cd9fc8a3165f7e"
@@ -272,7 +1457,7 @@
         "type": "function",
         "z": "ac978cd8aec44371",
         "name": "Modbus Request Setup",
-        "func": "//Store unit id here\nmsg.unitid = 3;\nmsg.payload = {\n    'fc': 3,\n    'unitid': 1,\n    'address': 0,\n    'quantity': 10 \n};\nreturn msg;",
+        "func": "//Store unit id here\nmsg.unitid = 3;\nmsg.payload = {\n    'fc': 3,\n    'unitid': 1,\n    'address': 0,\n    'quantity': 11 \n};\nreturn msg;",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
@@ -280,7 +1465,7 @@
         "finalize": "",
         "libs": [],
         "x": 250,
-        "y": 520,
+        "y": 480,
         "wires": [
             [
                 "8d8a31674c496bc3"
@@ -304,8 +1489,8 @@
         "keepMsgProperties": true,
         "delayOnStart": false,
         "startDelayTime": "",
-        "x": 508,
-        "y": 520,
+        "x": 550,
+        "y": 406.66666666666663,
         "wires": [
             [
                 "e538f9895bf8d49b"
@@ -318,7 +1503,7 @@
         "type": "function",
         "z": "ac978cd8aec44371",
         "name": "Modbus Request Setup",
-        "func": "//Store unit id here\nmsg.unitid = 4;\nmsg.payload = {\n    'fc': 3,\n    'unitid': 1,\n    'address': 0,\n    'quantity': 10\n};\nreturn msg;",
+        "func": "//Store unit id here\nmsg.unitid = 4;\nmsg.payload = {\n    'fc': 3,\n    'unitid': 1,\n    'address': 0,\n    'quantity': 11\n};\nreturn msg;",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
@@ -326,7 +1511,7 @@
         "finalize": "",
         "libs": [],
         "x": 250,
-        "y": 620,
+        "y": 634.2857142857142,
         "wires": [
             [
                 "06e8d36c947a56d0"
@@ -350,8 +1535,8 @@
         "keepMsgProperties": true,
         "delayOnStart": false,
         "startDelayTime": "",
-        "x": 508,
-        "y": 620,
+        "x": 550,
+        "y": 500,
         "wires": [
             [
                 "2aaaa727b8288992"
@@ -376,8 +1561,8 @@
         "drop": false,
         "allowrate": false,
         "outputs": 1,
-        "x": 170,
-        "y": 480,
+        "x": 210,
+        "y": 402.85714285714283,
         "wires": [
             [
                 "b4c9ebbdfa012465",
@@ -402,8 +1587,8 @@
         "drop": false,
         "allowrate": false,
         "outputs": 1,
-        "x": 170,
-        "y": 560,
+        "x": 210,
+        "y": 557.1428571428571,
         "wires": [
             [
                 "41ecbfac290e7bb7"
@@ -481,6 +1666,15 @@
                 "offsetbit": 0,
                 "scale": "1",
                 "mask": ""
+            },
+            {
+                "type": "uint16le",
+                "name": "reactor_number",
+                "offset": 20,
+                "length": 1,
+                "offsetbit": 0,
+                "scale": "1",
+                "mask": ""
             }
         ],
         "swap1": "swap16",
@@ -497,11 +1691,12 @@
         "fanOutMultipleResult": false,
         "setTopic": false,
         "outputs": 1,
-        "x": 730,
-        "y": 360,
+        "x": 790,
+        "y": 320,
         "wires": [
             [
-                "da801bb2e618c5a0"
+                "da801bb2e618c5a0",
+                "25add18126934daa"
             ]
         ]
     },
@@ -559,6 +1754,15 @@
                 "offsetbit": 0,
                 "scale": "1",
                 "mask": ""
+            },
+            {
+                "type": "uint16le",
+                "name": "reactor_number",
+                "offset": 20,
+                "length": 1,
+                "offsetbit": 0,
+                "scale": "1",
+                "mask": ""
             }
         ],
         "swap1": "swap16",
@@ -575,12 +1779,12 @@
         "fanOutMultipleResult": false,
         "setTopic": false,
         "outputs": 1,
-        "x": 750,
-        "y": 500,
+        "x": 790,
+        "y": 420,
         "wires": [
             [
                 "da801bb2e618c5a0",
-                "87759633c5d9f7f2"
+                "d7cf368f5e64ec1c"
             ]
         ]
     },
@@ -589,15 +1793,15 @@
         "type": "function",
         "z": "ac978cd8aec44371",
         "name": "Scale and Filter Data",
-        "func": "// --- Configuration Section (Easily Editable) ---\n\nconst deviceIdPrefix = \"pico_\";  // Prefix for device IDs\n\n// Calibration/Scaling factors.  These are now *PER DEVICE* and *PER SENSOR*.\nconst scalingFactors = {\n    \"pico_1\": {\n        Temperature: { sensorType: \"mA_INPUT\", rangeMin: -10, rangeMax: 150 }, // Example: 0-100 degrees\n        pH:          { sensorType: \"mA_INPUT\", rangeMin: -1, rangeMax: 15  }, // Example: 0-14 pH\n        ORP:         { sensorType: \"mA_INPUT\", rangeMin: -1000, rangeMax: +0 },// Example: -500 to +500 mV\n        motor_mA:    { multiplier: 0.1, offset: 0.0, sensorType: \"INA226\" },\n        RPM:         { multiplier: 1, offset: 0, sensorType: \"PULSE\", maxValue: 250, defaultValue: 0 }\n    },\n    \"pico_2\": {\n        Temperature: { sensorType: \"mA_INPUT\", rangeMin: -10, rangeMax: 150 },\n        pH:          { sensorType: \"mA_INPUT\", rangeMin: 0, rangeMax: 15, offset: 1.0 }, // Added offset to fix range issue\n        ORP:         { sensorType: \"mA_INPUT\", rangeMin: -1000, rangeMax: +0 },\n        motor_mA:    { multiplier: 0.1, offset: 0.0, sensorType: \"INA226\" },\n        RPM:         { multiplier: 1, offset: 0, sensorType: \"PULSE\", maxValue: 250, defaultValue: 0 }\n    },\n    \"pico_3\": {\n        Temperature: { sensorType: \"mA_INPUT\", rangeMin: 0, rangeMax: 100 },\n        pH:          { sensorType: \"mA_INPUT\", rangeMin: 0, rangeMax: 14 },\n        ORP:         { sensorType: \"mA_INPUT\", rangeMin: -1000, rangeMax: +0 },\n        motor_mA:    { multiplier: 0.1, offset: 0.0, sensorType: \"INA226\" },\n        RPM:         { multiplier: 1, offset: 0, sensorType: \"PULSE\", maxValue: 250, defaultValue: 0 }\n    },\n    \"pico_4\": {\n        Temperature: { sensorType: \"mA_INPUT\", rangeMin: 0, rangeMax: 100 },\n        pH:          { sensorType: \"mA_INPUT\", rangeMin: 0, rangeMax: 14 },\n        ORP:         { sensorType: \"mA_INPUT\", rangeMin: -1000, rangeMax: +0 },\n        motor_mA:    { multiplier: 0.1, offset: 0.0, sensorType: \"INA226\" },\n        RPM:         { multiplier: 1, offset: 0, sensorType: \"PULSE\", maxValue: 250, defaultValue: 0 }\n    },\n};\n\n// Define valid ranges for each measurement, *after* final scaling.  These are your REAL-WORLD units.\nconst validRanges = {\n    Temperature: { min: -1, max: 110 },  // Allow slight negative/overrange\n    pH:          { min: -0.5, max: 14.5 },\n    ORP:         { min: -2100, max: 2100 },\n    motor_mA:    { min: -5, max: 2000 },\n    RPM:         { min: 0, max: 250 }  // Slightly above expected max, for margin.\n};\n\n// Noise floor for 4-20mA signals.\nconst noiseFloor_mA = 0.5;\n\n// Measurement name for InfluxDB\nconst influxMeasurement = 'pico_measurements';\n\n// --- Additional Configuration for RPM Handling ---\nconst maxReasonableRPM = 250; // Maximum RPM, slightly above expected max.\n\n// --- Data Filtering Settings ---\nconst useDataFiltering = true;\n\n// --- End Configuration Section ---\n\n// --- Helper Functions ---\n\nfunction scale_mA_Input(value, rangeMin, rangeMax) {\n    // 1. Apply noise floor (in mA).\n    if (value < noiseFloor_mA) {\n        value = 0;\n    }\n\n    // 2. Convert 4-20mA to 0-100%.\n    const percent = (value - 4) / 16;\n\n    // 3. Clamp the percentage.\n    const clampedPercent = Math.max(0, Math.min(1, percent));\n\n    // 4. Scale to engineering units.\n    const scaledValue = rangeMin + clampedPercent * (rangeMax - rangeMin);\n    return scaledValue;\n}\n\nfunction validateAndScale(value, fieldName, deviceId) {\n    if (typeof value !== 'number' || isNaN(value) || !isFinite(value)) {\n        node.warn(`Invalid ${fieldName} for ${deviceId}: ${value} (Not a valid number)`);\n        return null;\n    }\n    \n    const deviceScaling = scalingFactors[deviceId] || {};\n    const scaling = deviceScaling[fieldName] || { sensorType: \"UNKNOWN\", rangeMin: 0, rangeMax: 1 };\n    \n    let scaledValue = value;\n    \n    // Pre-filtering for extreme values (especially for RPM)\n    if (fieldName === \"RPM\" && (value > 1000 || value < -10)) {\n        node.warn(`Filtering extreme ${fieldName} for ${deviceId}: ${value} (Setting to default value)`);\n        return scaling.defaultValue || 0;\n    }\n    \n    // Apply scaling based on sensor type\n    if (scaling.sensorType === \"mA_INPUT\") {\n        // Scale the mA value to engineering units.\n        scaledValue = scale_mA_Input(scaledValue, scaling.rangeMin, scaling.rangeMax);\n        \n        // Apply any additional offset if specified\n        if (scaling.offset) {\n            scaledValue += scaling.offset;\n        }\n        \n    } else if (scaling.sensorType === \"INA226\") {\n        // Apply offset and multiplier (for motor current).\n        scaledValue = value + scaling.offset;\n        scaledValue = scaledValue * scaling.multiplier;\n    } else if (scaling.sensorType === \"PULSE\") {\n        // RPM-Specific Handling:\n        if (scaledValue > (scaling.maxValue || maxReasonableRPM)) {\n            node.warn(`Invalid ${fieldName} for ${deviceId}: ${scaledValue} (Exceeds max reasonable RPM)`);\n            return scaling.defaultValue || 0; // Return the default value for this device\n        }\n    }\n    \n    // Range validation *after* scaling\n    const range = validRanges[fieldName];\n    if (range && (scaledValue < range.min || scaledValue > range.max)) {\n        node.warn(`Invalid ${fieldName} for ${deviceId}: ${scaledValue} (Out of range [${range.min}, ${range.max}])`);\n        \n        // For pH values, attempt a rescue by clamping\n        if (fieldName === \"pH\") {\n            return Math.max(range.min, Math.min(range.max, scaledValue));\n        }\n        \n        return null;\n    }\n    \n    return scaledValue;\n}\n\n// --- Main Function Logic ---\n\nconst data = msg.payload;\nconst deviceId = msg.unitid ? `${deviceIdPrefix}${msg.unitid}` : `${deviceIdPrefix}1`;\nconst timestamp = Date.now();\n\nconst influxData = {\n    measurement: influxMeasurement,\n    tags: {\n        device: deviceId\n    },\n    timestamp: timestamp,\n    fields: {}\n};\n\nconst fieldsToProcess = [\"Temperature\", \"pH\", \"ORP\", \"motor_mA\", \"RPM\"];\n\nfor (const field of fieldsToProcess) {\n    const scaledValue = validateAndScale(data[field], field, deviceId);\n    if (scaledValue !== null) {\n        influxData.fields[field] = scaledValue;\n    }\n}\n\nmsg.payload = [influxData];\nreturn msg;",
+        "func": "// --- Configuration Section (Easily Editable) ---\n\nconst deviceIdPrefix = \"pico_\";  // Prefix for device IDs\n\n// Calibration/Scaling factors.  These are now *PER DEVICE* and *PER SENSOR*.\nconst scalingFactors = {\n    \"pico_1\": {\n        Temperature: { \n            sensorType: \"mA_INPUT\", \n            rangeMin: 0, \n            rangeMax: 100,\n            // Add calibration factors here\n            calibration: { slope: 1.0, offset: 0.0 }\n        },\n        pH: { \n            sensorType: \"mA_INPUT\", \n            rangeMin: 0, \n            rangeMax: 14,\n            calibration: { slope: 1.0107, offset: 0.0 }\n        },\n        ORP: { \n            sensorType: \"mA_INPUT\", \n            rangeMin: -1000, \n            rangeMax: 500,\n            calibration: { slope: 1.093, offset: 0.0 }\n        },\n        motor_mA: { \n            multiplier: 1, \n            offset: 0.0, \n            sensorType: \"INA226\",\n            calibration: { slope: 1.0, offset: 0.0 }\n        },\n        RPM: { \n            multiplier: 1, \n            offset: 0, \n            sensorType: \"PULSE\",\n            calibration: { slope: 1.0, offset: 0.0 }\n        }\n    },\n    \"pico_2\": {\n        Temperature: { \n            sensorType: \"mA_INPUT\", \n            rangeMin: 0, \n            rangeMax: 100,\n            calibration: { slope: 1.0, offset: 0.0 }\n        },\n        pH: { \n            sensorType: \"mA_INPUT\", \n            rangeMin: 0, \n            rangeMax: 14,\n            calibration: { slope: 1.0107, offset: 0.0 }\n        },\n        ORP: { \n            sensorType: \"mA_INPUT\", \n            rangeMin: -1000, \n            rangeMax: 500,\n            calibration: { slope: 0.977, offset: 0.0 }\n        },\n        motor_mA: { \n            multiplier: -1, \n            offset: 0.0, \n            sensorType: \"INA226\",\n            calibration: { slope: 1.0, offset: 0.0 }\n        },\n        RPM: { \n            multiplier: 1, \n            offset: 0, \n            sensorType: \"PULSE\",\n            calibration: { slope: 1.0, offset: 0.0 }\n        }\n    },\n    \"pico_3\": {\n        Temperature: { \n            sensorType: \"mA_INPUT\", \n            rangeMin: 0, \n            rangeMax: 100,\n            calibration: { slope: 1.005, offset: 0.0 }\n        },\n        pH: { \n            sensorType: \"mA_INPUT\", \n            rangeMin: 0, \n            rangeMax: 14,\n            calibration: { slope: 1.0, offset: 0.0 }\n        },\n        ORP: { \n            sensorType: \"mA_INPUT\", \n            rangeMin: -1000, \n            rangeMax: 500,\n            calibration: { slope: 0.988, offset: 0.0 }\n        },\n        motor_mA: { \n            multiplier: 1, \n            offset: 0.0, \n            sensorType: \"INA226\",\n            calibration: { slope: 1.0, offset: 0.0 }\n        },\n        RPM: { \n            multiplier: 1/5.167, \n            offset: 0, \n            sensorType: \"PULSE\",\n            calibration: { slope: 1.0, offset: 0.0 }\n        }\n    },\n    \"pico_4\": {\n        Temperature: { \n            sensorType: \"mA_INPUT\", \n            rangeMin: 0, \n            rangeMax: 100,\n            calibration: { slope: 1.0, offset: 0.0 }\n        },\n        pH: { \n            sensorType: \"mA_INPUT\", \n            rangeMin: 0, \n            rangeMax: 14,\n            calibration: { slope: 1.0, offset: 0.0 }\n        },\n        ORP: { \n            sensorType: \"mA_INPUT\", \n            rangeMin: -1000, \n            rangeMax: 500,\n            calibration: { slope: 0.72, offset: 0.0 }\n        },\n        motor_mA: { \n            multiplier: 1, \n            offset: 0.0, \n            sensorType: \"INA226\",\n            calibration: { slope: 1.0, offset: 0.0 }\n        },\n        RPM: { \n            multiplier: 1/5.167, \n            offset: 0, \n            sensorType: \"PULSE\",\n            calibration: { slope: 1.0, offset: 0.0 }\n        }\n    },\n};\n\n// Define valid ranges for each measurement, *after* final scaling.  These are your REAL-WORLD units.\nconst validRanges = {\n    Temperature: { min: -1, max: 110 },  // Allow slight negative/overrange\n    pH:          { min: -0.5, max: 14.5 },\n    ORP:         { min: -2100, max: 2100 },\n    motor_mA:    { min: -5, max: 2000 },\n    RPM:         { min: 0, max: 500000 }  // Slightly above expected max, for margin.\n};\n\n// Noise floor for 4-20mA signals.\nconst noiseFloor_mA = 0.25;\n\n// Measurement name for InfluxDB\nconst influxMeasurement = 'pico_measurements';\n\n// --- End Configuration Section ---\n\n// --- Helper Functions ---\n\nfunction scale_mA_Input(value, rangeMin, rangeMax, calibration) {\n    // 1. Apply noise floor (in mA).\n    if (value < noiseFloor_mA) {\n        value = 0;\n    }\n\n    // 2. Convert 4-20mA to 0-100%.\n    const percent = (value - 4) / 16;\n\n    // 3. Clamp the percentage.\n    const clampedPercent = Math.max(0, Math.min(1, percent));\n\n    // 4. Scale to engineering units.\n    let scaledValue = rangeMin + clampedPercent * (rangeMax - rangeMin);\n    \n    // 5. Apply calibration factors (y = mx + b)\n    if (calibration) {\n        scaledValue = scaledValue * calibration.slope + calibration.offset;\n    }\n    \n    return scaledValue;\n}\n\nfunction validateAndScale(value, fieldName, deviceId) {\n    if (typeof value !== 'number' || isNaN(value) || !isFinite(value)) {\n        node.warn(`Invalid ${fieldName} for ${deviceId}: ${value} (Not a valid number)`);\n        return null;\n    }\n\n    const deviceScaling = scalingFactors[deviceId] || {};\n    const scaling = deviceScaling[fieldName] || { sensorType: \"UNKNOWN\", rangeMin: 0, rangeMax: 1 };\n\n    let scaledValue = value;\n\n    // Apply scaling based on sensor type\n    if (scaling.sensorType === \"mA_INPUT\") {\n        // Scale the mA value to engineering units.\n        scaledValue = scale_mA_Input(scaledValue, scaling.rangeMin, scaling.rangeMax, scaling.calibration);\n\n    } else if (scaling.sensorType === \"INA226\") {\n        // Apply offset and multiplier (for motor current).\n        scaledValue = value + scaling.offset;\n        scaledValue = scaledValue * scaling.multiplier;\n        \n        // Apply calibration factors\n        if (scaling.calibration) {\n            scaledValue = scaledValue * scaling.calibration.slope + scaling.calibration.offset;\n        }\n    } else if (scaling.sensorType === \"PULSE\") {\n        // Apply multiplier for RPM (including gear reduction for pico_3 and pico_4)\n        scaledValue = value * scaling.multiplier;\n        \n        // Apply calibration factors\n        if (scaling.calibration) {\n            scaledValue = scaledValue * scaling.calibration.slope + scaling.calibration.offset;\n        }\n    }\n\n    // Range validation *after* scaling\n    const range = validRanges[fieldName];\n    if (range && (scaledValue < range.min || scaledValue > range.max)) {\n        // node.warn(`Invalid ${fieldName} for ${deviceId}: ${scaledValue} (Out of range [${range.min}, ${range.max}])`);\n        return null;\n    }\n\n    return scaledValue;\n}\n\n// --- Main Function Logic ---\n\nconst data = msg.payload;\nconst deviceId = msg.unitid ? `${deviceIdPrefix}${msg.unitid}` : `${deviceIdPrefix}1`;\nconst timestamp = Date.now();\n\nconst influxData = {\n    measurement: influxMeasurement,\n    tags: {\n        device: deviceId\n    },\n    timestamp: timestamp,\n    fields: {}\n};\n\nconst fieldsToProcess = [\"Temperature\", \"pH\", \"ORP\", \"motor_mA\", \"RPM\"];\n\nfor (const field of fieldsToProcess) {\n    const scaledValue = validateAndScale(data[field], field, deviceId);\n    if (scaledValue !== null) {\n        influxData.fields[field] = scaledValue;\n    }\n}\n\n// Debug point - uncommenting this can help with calibration\n// node.warn(`Device ${deviceId} scaled values: ${JSON.stringify(influxData.fields)}`);\n\nmsg.payload = [influxData];\nreturn msg;",
         "outputs": 1,
         "timeout": "",
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 980,
-        "y": 380,
+        "x": 1040,
+        "y": 360,
         "wires": [
             [
                 "a9ec1568645bc5f9",
@@ -660,6 +1864,15 @@
                 "offsetbit": 0,
                 "scale": "1",
                 "mask": ""
+            },
+            {
+                "type": "uint16le",
+                "name": "reactor_number",
+                "offset": 20,
+                "length": 1,
+                "offsetbit": 0,
+                "scale": "1",
+                "mask": ""
             }
         ],
         "swap1": "swap16",
@@ -676,11 +1889,12 @@
         "fanOutMultipleResult": false,
         "setTopic": false,
         "outputs": 1,
-        "x": 730,
-        "y": 620,
+        "x": 790,
+        "y": 520,
         "wires": [
             [
-                "da801bb2e618c5a0"
+                "da801bb2e618c5a0",
+                "c0b097bea214691d"
             ]
         ]
     },
@@ -696,8 +1910,8 @@
         "complete": "false",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1260,
-        "y": 180,
+        "x": 1280,
+        "y": 300,
         "wires": []
     },
     {
@@ -714,157 +1928,1078 @@
         "org": "Scion",
         "bucket": "reactor-monitoring",
         "x": 1290,
-        "y": 520,
+        "y": 420,
         "wires": []
     },
     {
-        "id": "5b33d3a0df2de5e0",
-        "type": "modbus-client",
-        "name": "ACM1",
-        "clienttype": "simpleser",
-        "bufferCommands": true,
-        "stateLogEnabled": false,
-        "queueLogEnabled": false,
-        "failureLogEnabled": true,
-        "tcpHost": "127.0.0.1",
-        "tcpPort": "502",
-        "tcpType": "DEFAULT",
-        "serialPort": "/dev/ttyACM1",
-        "serialType": "RTU-BUFFERD",
-        "serialBaudrate": "115200",
-        "serialDatabits": "8",
-        "serialStopbits": "1",
-        "serialParity": "none",
-        "serialConnectionDelay": "100",
-        "serialAsciiResponseStartDelimiter": "0x3A",
-        "unit_id": "1",
-        "commandDelay": "1",
-        "clientTimeout": "1000",
-        "reconnectOnTimeout": true,
-        "reconnectTimeout": "2000",
-        "parallelUnitIdsAllowed": true,
-        "showErrors": false,
+        "id": "c0b097bea214691d",
+        "type": "debug",
+        "z": "ac978cd8aec44371",
+        "name": "debug 16",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 780,
+        "y": 560,
+        "wires": []
+    },
+    {
+        "id": "d7cf368f5e64ec1c",
+        "type": "debug",
+        "z": "ac978cd8aec44371",
+        "name": "debug 17",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 780,
+        "y": 460,
+        "wires": []
+    },
+    {
+        "id": "25add18126934daa",
+        "type": "debug",
+        "z": "ac978cd8aec44371",
+        "name": "debug 18",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 780,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "02afb9aa984725d2",
+        "type": "delay",
+        "z": "1389333f9aa0bc16",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "500",
+        "timeoutUnits": "milliseconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 150,
+        "y": 254.28571428571428,
+        "wires": [
+            [
+                "cd7a7f5d47241c59",
+                "356d91517565b696"
+            ]
+        ]
+    },
+    {
+        "id": "b1155883a018456b",
+        "type": "function",
+        "z": "1389333f9aa0bc16",
+        "name": "Modbus Request Setup",
+        "func": "//Store unit id here\nmsg.unitid = 1;\nmsg.payload = {\n    'fc': 3,  // Function code: Read Holding Registers\n    'unitid': 1,\n    'address': 0,  \n    'quantity': 20\n};\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 210,
+        "y": 200,
+        "wires": [
+            [
+                "f98c7ec29a1b140f",
+                "c65ac1587b432575"
+            ]
+        ]
+    },
+    {
+        "id": "f98c7ec29a1b140f",
+        "type": "modbus-flex-getter",
+        "z": "1389333f9aa0bc16",
+        "name": "Read Raw Modbus Data",
+        "showStatusActivities": true,
+        "showErrors": true,
         "showWarnings": true,
-        "showLogs": true
+        "logIOActivities": false,
+        "server": "modbus-server",
+        "useIOFile": false,
+        "ioFile": "",
+        "useIOForPayload": false,
+        "emptyMsgOnFail": false,
+        "keepMsgProperties": true,
+        "delayOnStart": false,
+        "startDelayTime": "",
+        "x": 510,
+        "y": 171.4285714285714,
+        "wires": [
+            [
+                "36a10a37369b498b",
+                "727f1a6b051cf6d1"
+            ],
+            []
+        ]
     },
     {
-        "id": "a1f84dec681b9b29",
-        "type": "modbus-client",
-        "name": "ACM3",
-        "clienttype": "simpleser",
-        "bufferCommands": true,
-        "stateLogEnabled": false,
-        "queueLogEnabled": false,
-        "failureLogEnabled": true,
-        "tcpHost": "127.0.0.1",
-        "tcpPort": "502",
-        "tcpType": "DEFAULT",
-        "serialPort": "/dev/ttyACM3",
-        "serialType": "RTU-BUFFERD",
-        "serialBaudrate": "115200",
-        "serialDatabits": "8",
-        "serialStopbits": "1",
-        "serialParity": "none",
-        "serialConnectionDelay": "100",
-        "serialAsciiResponseStartDelimiter": "0x3A",
-        "unit_id": "1",
-        "commandDelay": "1",
-        "clientTimeout": "1000",
-        "reconnectOnTimeout": true,
-        "reconnectTimeout": "2000",
-        "parallelUnitIdsAllowed": true,
-        "showErrors": false,
+        "id": "e4dc3e5bad17b487",
+        "type": "inject",
+        "z": "1389333f9aa0bc16",
+        "name": "5 Sec Trigger",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "5",
+        "crontab": "",
+        "once": true,
+        "onceDelay": "1",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 120,
+        "y": 145.71428571428572,
+        "wires": [
+            [
+                "b1155883a018456b",
+                "02afb9aa984725d2"
+            ]
+        ]
+    },
+    {
+        "id": "36a10a37369b498b",
+        "type": "buffer-parser",
+        "z": "1389333f9aa0bc16",
+        "name": "Parser",
+        "data": "payload",
+        "dataType": "msg",
+        "specification": "spec",
+        "specificationType": "ui",
+        "items": [
+            {
+                "type": "floatle",
+                "name": "Volume (mL)",
+                "offset": 0,
+                "length": 1,
+                "offsetbit": 0,
+                "scale": "1",
+                "mask": ""
+            },
+            {
+                "type": "floatle",
+                "name": "Volume Normalised (mL)",
+                "offset": 4,
+                "length": 1,
+                "offsetbit": 0,
+                "scale": "1",
+                "mask": ""
+            },
+            {
+                "type": "floatle",
+                "name": "Flow (mL/min)",
+                "offset": 8,
+                "length": 1,
+                "offsetbit": 0,
+                "scale": "1",
+                "mask": ""
+            },
+            {
+                "type": "floatle",
+                "name": "Flow Normalised (mL/min)",
+                "offset": 12,
+                "length": 1,
+                "offsetbit": 0,
+                "scale": "1",
+                "mask": ""
+            },
+            {
+                "type": "floatle",
+                "name": "Temperature (°C)",
+                "offset": 16,
+                "length": 1,
+                "offsetbit": 0,
+                "scale": "1",
+                "mask": ""
+            },
+            {
+                "type": "floatle",
+                "name": "Pressure (hPa)",
+                "offset": 20,
+                "length": 1,
+                "offsetbit": 0,
+                "scale": "1",
+                "mask": ""
+            },
+            {
+                "type": "uint32le",
+                "name": "Timestamp",
+                "offset": 24,
+                "length": 1,
+                "offsetbit": 0,
+                "scale": "1",
+                "mask": ""
+            },
+            {
+                "type": "floatle",
+                "name": "Power Supply (V) ",
+                "offset": 28,
+                "length": 1,
+                "offsetbit": 0,
+                "scale": "1",
+                "mask": ""
+            },
+            {
+                "type": "floatle",
+                "name": "Battery (V)",
+                "offset": 32,
+                "length": 1,
+                "offsetbit": 0,
+                "scale": "1",
+                "mask": ""
+            }
+        ],
+        "swap1": "swap16",
+        "swap2": "",
+        "swap3": "",
+        "swap1Type": "swap",
+        "swap2Type": "swap",
+        "swap3Type": "swap",
+        "msgProperty": "payload",
+        "msgPropertyType": "str",
+        "resultType": "keyvalue",
+        "resultTypeType": "return",
+        "multipleResult": false,
+        "fanOutMultipleResult": false,
+        "setTopic": true,
+        "outputs": 1,
+        "x": 730,
+        "y": 233.33333333333337,
+        "wires": [
+            [
+                "5b3c52ea8f15ce17",
+                "118b254427b33a50"
+            ]
+        ]
+    },
+    {
+        "id": "8e702722a1c2df99",
+        "type": "debug",
+        "z": "1389333f9aa0bc16",
+        "name": "debug 9",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 805,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "cd7a7f5d47241c59",
+        "type": "function",
+        "z": "1389333f9aa0bc16",
+        "name": "Modbus Request Setup",
+        "func": "//Store unit id here\nmsg.unitid = 2;\nmsg.payload = {\n    'fc': 3,  // Function code: Read Holding Registers\n    'unitid': 2,\n    'address': 0,\n    'quantity': 20\n};\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 230,
+        "y": 308.57142857142856,
+        "wires": [
+            [
+                "aaaf1be865503c38"
+            ]
+        ]
+    },
+    {
+        "id": "aaaf1be865503c38",
+        "type": "modbus-flex-getter",
+        "z": "1389333f9aa0bc16",
+        "name": "Read Raw Modbus Data",
+        "showStatusActivities": true,
+        "showErrors": true,
         "showWarnings": true,
-        "showLogs": true
+        "logIOActivities": false,
+        "server": "modbus-server",
+        "useIOFile": false,
+        "ioFile": "",
+        "useIOForPayload": false,
+        "emptyMsgOnFail": false,
+        "keepMsgProperties": true,
+        "delayOnStart": false,
+        "startDelayTime": "",
+        "x": 510,
+        "y": 287.6190476190476,
+        "wires": [
+            [
+                "02bfbbf8e2e0e8c6"
+            ],
+            []
+        ]
     },
     {
-        "id": "ef99d96f993392a8",
-        "type": "modbus-client",
-        "name": "ACM2",
-        "clienttype": "simpleser",
-        "bufferCommands": true,
-        "stateLogEnabled": false,
-        "queueLogEnabled": false,
-        "failureLogEnabled": true,
-        "tcpHost": "127.0.0.1",
-        "tcpPort": "502",
-        "tcpType": "DEFAULT",
-        "serialPort": "/dev/ttyACM2",
-        "serialType": "RTU",
-        "serialBaudrate": "115200",
-        "serialDatabits": "8",
-        "serialStopbits": "1",
-        "serialParity": "none",
-        "serialConnectionDelay": "100",
-        "serialAsciiResponseStartDelimiter": "0x3A",
-        "unit_id": "1",
-        "commandDelay": "1",
-        "clientTimeout": "1000",
-        "reconnectOnTimeout": true,
-        "reconnectTimeout": "2000",
-        "parallelUnitIdsAllowed": true,
-        "showErrors": false,
+        "id": "f7fa4fcdfe04bd79",
+        "type": "function",
+        "z": "1389333f9aa0bc16",
+        "name": "Modbus Request Setup",
+        "func": "//Store unit id here\nmsg.unitid = 3;\nmsg.payload = {\n    'fc': 3,  // Function code: Read Holding Registers\n    'unitid': 3,\n    'address': 0,\n    'quantity': 20\n};\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 230,
+        "y": 417.1428571428571,
+        "wires": [
+            [
+                "7bbcde623c6b6603"
+            ]
+        ]
+    },
+    {
+        "id": "7bbcde623c6b6603",
+        "type": "modbus-flex-getter",
+        "z": "1389333f9aa0bc16",
+        "name": "Read Raw Modbus Data",
+        "showStatusActivities": true,
+        "showErrors": true,
         "showWarnings": true,
-        "showLogs": true
+        "logIOActivities": false,
+        "server": "modbus-server",
+        "useIOFile": false,
+        "ioFile": "",
+        "useIOForPayload": false,
+        "emptyMsgOnFail": false,
+        "keepMsgProperties": true,
+        "delayOnStart": false,
+        "startDelayTime": "",
+        "x": 510,
+        "y": 403.8095238095238,
+        "wires": [
+            [
+                "5442578935fb809d"
+            ],
+            []
+        ]
     },
     {
-        "id": "mbclient1",
-        "type": "modbus-client",
-        "name": "ACM0",
-        "clienttype": "serial",
-        "bufferCommands": false,
-        "stateLogEnabled": true,
-        "queueLogEnabled": false,
-        "failureLogEnabled": true,
-        "tcpHost": "127.0.0.1",
-        "tcpPort": "502",
-        "tcpType": "DEFAULT",
-        "serialPort": "/dev/ttyACM0",
-        "serialType": "RTU",
-        "serialBaudrate": "115200",
-        "serialDatabits": "8",
-        "serialStopbits": "1",
-        "serialParity": "none",
-        "serialConnectionDelay": "100",
-        "serialAsciiResponseStartDelimiter": "",
-        "unit_id": "",
-        "commandDelay": "1",
-        "clientTimeout": "1000",
-        "reconnectOnTimeout": false,
-        "reconnectTimeout": "2000",
-        "parallelUnitIdsAllowed": false,
-        "showErrors": false,
+        "id": "5287a71a7699bda6",
+        "type": "function",
+        "z": "1389333f9aa0bc16",
+        "name": "Modbus Request Setup",
+        "func": "//Store unit id here\nmsg.unitid = 4;\nmsg.payload = {\n    'fc': 3,  // Function code: Read Holding Registers\n    'unitid': 4,\n    'address': 0,  \n    'quantity': 20\n};\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 230,
+        "y": 525.7142857142858,
+        "wires": [
+            [
+                "eacce3c9826c2a4c"
+            ]
+        ]
+    },
+    {
+        "id": "eacce3c9826c2a4c",
+        "type": "modbus-flex-getter",
+        "z": "1389333f9aa0bc16",
+        "name": "Read Raw Modbus Data",
+        "showStatusActivities": true,
+        "showErrors": true,
         "showWarnings": true,
-        "showLogs": true
+        "logIOActivities": false,
+        "server": "modbus-server",
+        "useIOFile": false,
+        "ioFile": "",
+        "useIOForPayload": false,
+        "emptyMsgOnFail": false,
+        "keepMsgProperties": true,
+        "delayOnStart": false,
+        "startDelayTime": "",
+        "x": 510,
+        "y": 520,
+        "wires": [
+            [
+                "f491850509fa0f54"
+            ],
+            []
+        ]
     },
     {
-        "id": "d9a29a25883258e7",
-        "type": "influxdb",
-        "hostname": "127.0.0.1",
-        "port": "8086",
-        "protocol": "http",
-        "database": "reactor_db",
-        "name": "Local InfluxDB",
-        "usetls": false,
-        "tls": "",
-        "influxdbVersion": "2.0",
-        "url": "http://localhost:8086",
-        "timeout": "",
-        "rejectUnauthorized": false
+        "id": "356d91517565b696",
+        "type": "delay",
+        "z": "1389333f9aa0bc16",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "500",
+        "timeoutUnits": "milliseconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 150,
+        "y": 362.85714285714283,
+        "wires": [
+            [
+                "f7fa4fcdfe04bd79",
+                "790fc227bb4493e9"
+            ]
+        ]
     },
     {
-        "id": "influxconfig",
-        "type": "influxdb",
-        "hostname": "127.0.0.1",
-        "port": "8086",
-        "protocol": "http",
+        "id": "790fc227bb4493e9",
+        "type": "delay",
+        "z": "1389333f9aa0bc16",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "500",
+        "timeoutUnits": "milliseconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 150,
+        "y": 471.4285714285714,
+        "wires": [
+            [
+                "5287a71a7699bda6"
+            ]
+        ]
+    },
+    {
+        "id": "1469138eb35d1607",
+        "type": "debug",
+        "z": "1389333f9aa0bc16",
+        "name": "debug 10",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1140,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "c65ac1587b432575",
+        "type": "debug",
+        "z": "1389333f9aa0bc16",
+        "name": "debug 11",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 395,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "727f1a6b051cf6d1",
+        "type": "debug",
+        "z": "1389333f9aa0bc16",
+        "name": "debug 12",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 600,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "02bfbbf8e2e0e8c6",
+        "type": "buffer-parser",
+        "z": "1389333f9aa0bc16",
+        "name": "Parser",
+        "data": "payload",
+        "dataType": "msg",
+        "specification": "spec",
+        "specificationType": "ui",
+        "items": [
+            {
+                "type": "floatle",
+                "name": "Volume (mL)",
+                "offset": 0,
+                "length": 1,
+                "offsetbit": 0,
+                "scale": "1",
+                "mask": ""
+            },
+            {
+                "type": "floatle",
+                "name": "Volume Normalised (mL)",
+                "offset": 4,
+                "length": 1,
+                "offsetbit": 0,
+                "scale": "1",
+                "mask": ""
+            },
+            {
+                "type": "floatle",
+                "name": "Flow (mL/min)",
+                "offset": 8,
+                "length": 1,
+                "offsetbit": 0,
+                "scale": "1",
+                "mask": ""
+            },
+            {
+                "type": "floatle",
+                "name": "Flow Normalised (mL/min)",
+                "offset": 12,
+                "length": 1,
+                "offsetbit": 0,
+                "scale": "1",
+                "mask": ""
+            },
+            {
+                "type": "floatle",
+                "name": "Temperature (°C)",
+                "offset": 16,
+                "length": 1,
+                "offsetbit": 0,
+                "scale": "1",
+                "mask": ""
+            },
+            {
+                "type": "floatle",
+                "name": "Pressure (hPa)",
+                "offset": 20,
+                "length": 1,
+                "offsetbit": 0,
+                "scale": "1",
+                "mask": ""
+            },
+            {
+                "type": "uint32le",
+                "name": "Timestamp",
+                "offset": 24,
+                "length": 1,
+                "offsetbit": 0,
+                "scale": "1",
+                "mask": ""
+            },
+            {
+                "type": "floatle",
+                "name": "Power Supply (V) ",
+                "offset": 28,
+                "length": 1,
+                "offsetbit": 0,
+                "scale": "1",
+                "mask": ""
+            },
+            {
+                "type": "floatle",
+                "name": "Battery (V)",
+                "offset": 32,
+                "length": 1,
+                "offsetbit": 0,
+                "scale": "1",
+                "mask": ""
+            }
+        ],
+        "swap1": "swap16",
+        "swap2": "",
+        "swap3": "",
+        "swap1Type": "swap",
+        "swap2Type": "swap",
+        "swap3Type": "swap",
+        "msgProperty": "payload",
+        "msgPropertyType": "str",
+        "resultType": "keyvalue",
+        "resultTypeType": "return",
+        "multipleResult": false,
+        "fanOutMultipleResult": false,
+        "setTopic": true,
+        "outputs": 1,
+        "x": 730,
+        "y": 306.6666666666667,
+        "wires": [
+            [
+                "8e702722a1c2df99",
+                "4b0b0633eeaafd92"
+            ]
+        ]
+    },
+    {
+        "id": "5442578935fb809d",
+        "type": "buffer-parser",
+        "z": "1389333f9aa0bc16",
+        "name": "Parser",
+        "data": "payload",
+        "dataType": "msg",
+        "specification": "spec",
+        "specificationType": "ui",
+        "items": [
+            {
+                "type": "floatle",
+                "name": "Volume (mL)",
+                "offset": 0,
+                "length": 1,
+                "offsetbit": 0,
+                "scale": "1",
+                "mask": ""
+            },
+            {
+                "type": "floatle",
+                "name": "Volume Normalised (mL)",
+                "offset": 4,
+                "length": 1,
+                "offsetbit": 0,
+                "scale": "1",
+                "mask": ""
+            },
+            {
+                "type": "floatle",
+                "name": "Flow (mL/min)",
+                "offset": 8,
+                "length": 1,
+                "offsetbit": 0,
+                "scale": "1",
+                "mask": ""
+            },
+            {
+                "type": "floatle",
+                "name": "Flow Normalised (mL/min)",
+                "offset": 12,
+                "length": 1,
+                "offsetbit": 0,
+                "scale": "1",
+                "mask": ""
+            },
+            {
+                "type": "floatle",
+                "name": "Temperature (°C)",
+                "offset": 16,
+                "length": 1,
+                "offsetbit": 0,
+                "scale": "1",
+                "mask": ""
+            },
+            {
+                "type": "floatle",
+                "name": "Pressure (hPa)",
+                "offset": 20,
+                "length": 1,
+                "offsetbit": 0,
+                "scale": "1",
+                "mask": ""
+            },
+            {
+                "type": "uint32le",
+                "name": "Timestamp",
+                "offset": 24,
+                "length": 1,
+                "offsetbit": 0,
+                "scale": "1",
+                "mask": ""
+            },
+            {
+                "type": "floatle",
+                "name": "Power Supply (V) ",
+                "offset": 28,
+                "length": 1,
+                "offsetbit": 0,
+                "scale": "1",
+                "mask": ""
+            },
+            {
+                "type": "floatle",
+                "name": "Battery (V)",
+                "offset": 32,
+                "length": 1,
+                "offsetbit": 0,
+                "scale": "1",
+                "mask": ""
+            }
+        ],
+        "swap1": "swap16",
+        "swap2": "",
+        "swap3": "",
+        "swap1Type": "swap",
+        "swap2Type": "swap",
+        "swap3Type": "swap",
+        "msgProperty": "payload",
+        "msgPropertyType": "str",
+        "resultType": "keyvalue",
+        "resultTypeType": "return",
+        "multipleResult": false,
+        "fanOutMultipleResult": false,
+        "setTopic": true,
+        "outputs": 1,
+        "x": 730,
+        "y": 380,
+        "wires": [
+            [
+                "c1fda35a740f781d"
+            ]
+        ]
+    },
+    {
+        "id": "f491850509fa0f54",
+        "type": "buffer-parser",
+        "z": "1389333f9aa0bc16",
+        "name": "Parser",
+        "data": "payload",
+        "dataType": "msg",
+        "specification": "spec",
+        "specificationType": "ui",
+        "items": [
+            {
+                "type": "floatle",
+                "name": "Volume (mL)",
+                "offset": 0,
+                "length": 1,
+                "offsetbit": 0,
+                "scale": "1",
+                "mask": ""
+            },
+            {
+                "type": "floatle",
+                "name": "Volume Normalised (mL)",
+                "offset": 4,
+                "length": 1,
+                "offsetbit": 0,
+                "scale": "1",
+                "mask": ""
+            },
+            {
+                "type": "floatle",
+                "name": "Flow (mL/min)",
+                "offset": 8,
+                "length": 1,
+                "offsetbit": 0,
+                "scale": "1",
+                "mask": ""
+            },
+            {
+                "type": "floatle",
+                "name": "Flow Normalised (mL/min)",
+                "offset": 12,
+                "length": 1,
+                "offsetbit": 0,
+                "scale": "1",
+                "mask": ""
+            },
+            {
+                "type": "floatle",
+                "name": "Temperature (°C)",
+                "offset": 16,
+                "length": 1,
+                "offsetbit": 0,
+                "scale": "1",
+                "mask": ""
+            },
+            {
+                "type": "floatle",
+                "name": "Pressure (hPa)",
+                "offset": 20,
+                "length": 1,
+                "offsetbit": 0,
+                "scale": "1",
+                "mask": ""
+            },
+            {
+                "type": "uint32le",
+                "name": "Timestamp",
+                "offset": 24,
+                "length": 1,
+                "offsetbit": 0,
+                "scale": "1",
+                "mask": ""
+            },
+            {
+                "type": "floatle",
+                "name": "Power Supply (V) ",
+                "offset": 28,
+                "length": 1,
+                "offsetbit": 0,
+                "scale": "1",
+                "mask": ""
+            },
+            {
+                "type": "floatle",
+                "name": "Battery (V)",
+                "offset": 32,
+                "length": 1,
+                "offsetbit": 0,
+                "scale": "1",
+                "mask": ""
+            }
+        ],
+        "swap1": "swap16",
+        "swap2": "",
+        "swap3": "",
+        "swap1Type": "swap",
+        "swap2Type": "swap",
+        "swap3Type": "swap",
+        "msgProperty": "payload",
+        "msgPropertyType": "str",
+        "resultType": "keyvalue",
+        "resultTypeType": "return",
+        "multipleResult": false,
+        "fanOutMultipleResult": false,
+        "setTopic": true,
+        "outputs": 1,
+        "x": 730,
+        "y": 453.33333333333337,
+        "wires": [
+            [
+                "157bdeaf2b6a360a"
+            ]
+        ]
+    },
+    {
+        "id": "5b3c52ea8f15ce17",
+        "type": "debug",
+        "z": "1389333f9aa0bc16",
+        "name": "debug 19",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 980,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "118b254427b33a50",
+        "type": "function",
+        "z": "1389333f9aa0bc16",
+        "name": "function 1",
+        "func": "const data = msg.payload;\n\n// Define a fixed device ID since it's only coming from gas meter 1\nconst deviceId = 'gas_meter_1';\n\n// Convert timestamp to milliseconds (assuming precision in InfluxDB config is 'ms')\nconst timestamp = Math.floor(data[\"Timestamp\"] * 1000);\n\nmsg.measurement = 'gas_meter_1';\nmsg.tags = { device: deviceId };\nmsg.timestamp = timestamp;\nmsg.fields = {\n    Volume_mL: parseFloat(data[\"Volume (mL)\"]),\n    Volume_Normalised_mL: parseFloat(data[\"Volume Normalised (mL)\"]),\n    Flow_mL_min: parseFloat(data[\"Flow (mL/min)\"]),\n    Flow_Normalised_mL_min: parseFloat(data[\"Flow Normalised (mL/min)\"]),\n    Temperature_C: parseFloat(data[\"Temperature (°C)\"]),\n    Pressure_hPa: parseFloat(data[\"Pressure (hPa)\"]),\n    Power_Supply_V: parseFloat(data[\"Power Supply (V) \"]),\n    Battery_V: parseFloat(data[\"Battery (V)\"])\n};\n\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 940,
+        "y": 240,
+        "wires": [
+            [
+                "90bab4670523a2a9",
+                "6a8ac88abc4480c5",
+                "9e75a0cb14e9d129"
+            ]
+        ]
+    },
+    {
+        "id": "90bab4670523a2a9",
+        "type": "influxdb out",
+        "z": "1389333f9aa0bc16",
+        "influxdb": "d9a29a25883258e7",
+        "name": "",
+        "measurement": "",
+        "precision": "",
+        "retentionPolicy": "",
         "database": "database",
-        "name": "Scion InfluxDB",
-        "usetls": false,
-        "tls": "",
-        "influxdbVersion": "2.0",
-        "url": "https://influxdb.scionresearch.com",
-        "timeout": "10",
-        "rejectUnauthorized": false
+        "precisionV18FluxV20": "ms",
+        "retentionPolicyV18Flux": "",
+        "org": "Cetogenix",
+        "bucket": "reactor-monitoring",
+        "x": 1260,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "6a8ac88abc4480c5",
+        "type": "debug",
+        "z": "1389333f9aa0bc16",
+        "name": "debug 20",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1150,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "9e75a0cb14e9d129",
+        "type": "influxdb out",
+        "z": "1389333f9aa0bc16",
+        "influxdb": "influxconfig",
+        "name": "",
+        "measurement": "",
+        "precision": "",
+        "retentionPolicy": "",
+        "database": "database",
+        "precisionV18FluxV20": "ms",
+        "retentionPolicyV18Flux": "",
+        "org": "Scion",
+        "bucket": "reactor-monitoring",
+        "x": 1260,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "aa764ef5d4c2d5a0",
+        "type": "function",
+        "z": "1389333f9aa0bc16",
+        "name": "Prepare InfluxDB Data",
+        "func": "const data = msg.payload;\n\n// Determine the device ID\nconst deviceId = msg.unitid ? `gas_meter_${msg.unitid}` : 'gas_meter_1';\n\n// Since precision is set to 'ms' in InfluxDB config, convert timestamp to milliseconds\nconst timestamp = Math.floor(data[\"Timestamp\"] * 1000);\n\nconst influxData = {\n    measurement: 'gas_meter',\n    tags: {\n        device: deviceId\n    },\n    timestamp: timestamp,\n    fields: {\n        Volume_mL: parseFloat(data[\"Volume (mL)\"]),\n        Volume_Normalised_mL: parseFloat(data[\"Volume Normalised (mL)\"]),\n        Flow_mL_min: parseFloat(data[\"Flow (mL/min)\"]),\n        Flow_Normalised_mL_min: parseFloat(data[\"Flow Normalised (mL/min)\"]),\n        Temperature_C: parseFloat(data[\"Temperature (°C)\"]),\n        Pressure_hPa: parseFloat(data[\"Pressure (hPa)\"]),\n        Power_Supply_V: parseFloat(data[\"Power Supply (V) \"]),\n        Battery_V: parseFloat(data[\"Battery (V)\"])\n    }\n};\n\nmsg.payload = [influxData];  // Wrap in array as expected by InfluxDB node\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 840,
+        "y": 800,
+        "wires": [
+            [
+                "7326f3201ea38f6d",
+                "6a1b196baf7102b9"
+            ]
+        ]
+    },
+    {
+        "id": "7326f3201ea38f6d",
+        "type": "influxdb batch",
+        "z": "1389333f9aa0bc16",
+        "influxdb": "d9a29a25883258e7",
+        "precision": "",
+        "retentionPolicy": "",
+        "name": "Local",
+        "database": "database",
+        "precisionV18FluxV20": "ms",
+        "retentionPolicyV18Flux": "",
+        "org": "Cetogenix",
+        "bucket": "reactor-monitoring",
+        "x": 1050,
+        "y": 720,
+        "wires": []
+    },
+    {
+        "id": "6a1b196baf7102b9",
+        "type": "influxdb batch",
+        "z": "1389333f9aa0bc16",
+        "influxdb": "influxconfig",
+        "precision": "",
+        "retentionPolicy": "",
+        "name": "Scion",
+        "database": "database",
+        "precisionV18FluxV20": "ms",
+        "retentionPolicyV18Flux": "",
+        "org": "Scion",
+        "bucket": "reactor-monitoring",
+        "x": 1030,
+        "y": 840,
+        "wires": []
+    },
+    {
+        "id": "4b0b0633eeaafd92",
+        "type": "function",
+        "z": "1389333f9aa0bc16",
+        "name": "function 2",
+        "func": "const data = msg.payload;\n\n// Define a fixed device ID since it's only coming from gas meter 1\nconst deviceId = 'gas_meter_2';\n\n// Convert timestamp to milliseconds (assuming precision in InfluxDB config is 'ms')\nconst timestamp = Math.floor(data[\"Timestamp\"] * 1000);\n\nmsg.measurement = 'gas_meter_2';\nmsg.tags = { device: deviceId };\nmsg.timestamp = timestamp;\nmsg.fields = {\n    Volume_mL: parseFloat(data[\"Volume (mL)\"]),\n    Volume_Normalised_mL: parseFloat(data[\"Volume Normalised (mL)\"]),\n    Flow_mL_min: parseFloat(data[\"Flow (mL/min)\"]),\n    Flow_Normalised_mL_min: parseFloat(data[\"Flow Normalised (mL/min)\"]),\n    Temperature_C: parseFloat(data[\"Temperature (°C)\"]),\n    Pressure_hPa: parseFloat(data[\"Pressure (hPa)\"]),\n    Power_Supply_V: parseFloat(data[\"Power Supply (V) \"]),\n    Battery_V: parseFloat(data[\"Battery (V)\"])\n};\n\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 940,
+        "y": 320,
+        "wires": [
+            [
+                "90bab4670523a2a9",
+                "9e75a0cb14e9d129"
+            ]
+        ]
+    },
+    {
+        "id": "c1fda35a740f781d",
+        "type": "function",
+        "z": "1389333f9aa0bc16",
+        "name": "function 3",
+        "func": "const data = msg.payload;\n\n// Define a fixed device ID since it's only coming from gas meter 1\nconst deviceId = 'gas_meter_3';\n\n// Convert timestamp to milliseconds (assuming precision in InfluxDB config is 'ms')\nconst timestamp = Math.floor(data[\"Timestamp\"] * 1000);\n\nmsg.measurement = 'gas_meter_3';\nmsg.tags = { device: deviceId };\nmsg.timestamp = timestamp;\nmsg.fields = {\n    Volume_mL: parseFloat(data[\"Volume (mL)\"]),\n    Volume_Normalised_mL: parseFloat(data[\"Volume Normalised (mL)\"]),\n    Flow_mL_min: parseFloat(data[\"Flow (mL/min)\"]),\n    Flow_Normalised_mL_min: parseFloat(data[\"Flow Normalised (mL/min)\"]),\n    Temperature_C: parseFloat(data[\"Temperature (°C)\"]),\n    Pressure_hPa: parseFloat(data[\"Pressure (hPa)\"]),\n    Power_Supply_V: parseFloat(data[\"Power Supply (V) \"]),\n    Battery_V: parseFloat(data[\"Battery (V)\"])\n};\n\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 940.2000122070312,
+        "y": 387.1999816894531,
+        "wires": [
+            [
+                "90bab4670523a2a9",
+                "9e75a0cb14e9d129"
+            ]
+        ]
+    },
+    {
+        "id": "157bdeaf2b6a360a",
+        "type": "function",
+        "z": "1389333f9aa0bc16",
+        "name": "function 4",
+        "func": "const data = msg.payload;\n\n// Define a fixed device ID since it's only coming from gas meter 1\nconst deviceId = 'gas_meter_4';\n\n// Convert timestamp to milliseconds (assuming precision in InfluxDB config is 'ms')\nconst timestamp = Math.floor(data[\"Timestamp\"] * 1000);\n\nmsg.measurement = 'gas_meter_4';\nmsg.tags = { device: deviceId };\nmsg.timestamp = timestamp;\nmsg.fields = {\n    Volume_mL: parseFloat(data[\"Volume (mL)\"]),\n    Volume_Normalised_mL: parseFloat(data[\"Volume Normalised (mL)\"]),\n    Flow_mL_min: parseFloat(data[\"Flow (mL/min)\"]),\n    Flow_Normalised_mL_min: parseFloat(data[\"Flow Normalised (mL/min)\"]),\n    Temperature_C: parseFloat(data[\"Temperature (°C)\"]),\n    Pressure_hPa: parseFloat(data[\"Pressure (hPa)\"]),\n    Power_Supply_V: parseFloat(data[\"Power Supply (V) \"]),\n    Battery_V: parseFloat(data[\"Battery (V)\"])\n};\n\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 918.2000122070312,
+        "y": 445.1999816894531,
+        "wires": [
+            [
+                "90bab4670523a2a9",
+                "9e75a0cb14e9d129"
+            ]
+        ]
     }
 ]
