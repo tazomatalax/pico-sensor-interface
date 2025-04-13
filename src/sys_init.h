@@ -23,7 +23,7 @@
 // Modbus
 #define MODBUS_SLAVE_ID 1
 #define MODBUS_BAUD 115200
-#define MODBUS_UNIT_ID 4            // Unit ID in holding register for ident
+#define MODBUS_UNIT_ID 4            // Unit ID in holding register for ident Change this to match the unit ID of the Pico
 
 // 4-2-mA calcs
 #define SAMPLES  255                // Number of samples per channel measurement (about 100µs per sample)
