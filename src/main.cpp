@@ -1,4 +1,19 @@
 #include "sys_init.h"
+#include <Wire.h>
+
+// AS5600 I2C address and register
+#define AS5600_ADDR 0x36
+#define AS5600_ANGLE_HI 0x0E
+#define AS5600_ANGLE_LO 0x0F
+
+// AS5600 RPM calculation state
+volatile uint16_t as5600_prev_angle = 0;
+volatile uint32_t as5600_prev_time = 0;
+volatile float as5600_rpm = 0.0;
+#define AS5600_SAMPLE_INTERVAL 50 // ms
+#define AS5600_MA_FILTER_SIZE 5
+float as5600_rpm_history[AS5600_MA_FILTER_SIZE] = {0};
+uint8_t as5600_rpm_idx = 0;
 
 // Forward declarations
 void pulse_ISR(void);
@@ -7,6 +22,8 @@ void handle_current_sensor(void);
 void handle_led(void);
 bool set_rpm(float rpm_val);
 bool check_pulse_timeout(void);
+uint16_t as5600_read_angle();
+void handle_as5600_rpm(void);
 
 // ----------------------------Setup ----------------------------
 
@@ -66,6 +83,7 @@ void loop() {
     if (millis() - adcLastMillis > ADC_INTERVAL) handle_ADC();
     if (millis() - motorLastMillis > MOTOR_INTERVAL) handle_current_sensor();
     if (millis() - ledLastMillis > LED_INTERVAL) handle_led();
+    if (millis() - as5600_prev_time > AS5600_SAMPLE_INTERVAL) handle_as5600_rpm();
 }
 
 void loop1() {
@@ -168,4 +186,47 @@ bool check_pulse_timeout(void) {
     rpm = 0.0;
     set_rpm(0.0);
     return true;
+}
+
+// Read 12-bit angle from AS5600
+uint16_t as5600_read_angle() {
+    Wire.beginTransmission(AS5600_ADDR);
+    Wire.write(AS5600_ANGLE_HI);
+    Wire.endTransmission(false);
+    Wire.requestFrom(AS5600_ADDR, 2u);
+    uint8_t hi = Wire.read();
+    uint8_t lo = Wire.read();
+    return ((hi << 8) | lo) & 0x0FFF;
+}
+
+// Handle AS5600 RPM calculation
+void handle_as5600_rpm() {
+    static bool initialized = false;
+    uint32_t now = millis();
+    uint16_t angle = as5600_read_angle();
+    if (!initialized) {
+        as5600_prev_angle = angle;
+        as5600_prev_time = now;
+        initialized = true;
+        return;
+    }
+    int16_t delta = angle - as5600_prev_angle;
+    if (delta > 2048) delta -= 4096;
+    if (delta < -2048) delta += 4096;
+    uint32_t dt = now - as5600_prev_time;
+    if (dt > 0) {
+        float rpm = fabsf((float)delta * 60.0f / 4096.0f / ((float)dt / 1000.0f));
+        as5600_rpm_history[as5600_rpm_idx] = rpm;
+        as5600_rpm_idx = (as5600_rpm_idx + 1) % AS5600_MA_FILTER_SIZE;
+        float sum = 0.0f;
+        for (uint8_t i = 0; i < AS5600_MA_FILTER_SIZE; i++) sum += as5600_rpm_history[i];
+        as5600_rpm = sum / AS5600_MA_FILTER_SIZE;
+        if (xSemaphoreTake(sensorMutex, 0) == pdTRUE) {
+            sensors.rpm = as5600_rpm;
+            xSemaphoreGive(sensorMutex);
+        }
+        if (debug) SerialDebug.printf("AS5600: raw delta=%d, dt=%lu ms, rpm=%.2f\n", delta, dt, as5600_rpm);
+    }
+    as5600_prev_angle = angle;
+    as5600_prev_time = now;
 }
