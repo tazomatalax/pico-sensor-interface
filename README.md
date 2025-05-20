@@ -12,13 +12,14 @@ A Raspberry Pi Pico-based sensor interface project that provides real-time monit
 - Dual-core utilization for efficient task handling
 - Motor power control functionality
 - Thread-safe sensor data handling using FreeRTOS mutexes
+- **Current sensing code is present but disabled by default for hardware compatibility**
 
 ## Hardware Requirements
 
 - Raspberry Pi Pico
 - 4 - 20mA Sensors (100R shunt resistor)
 - Active low RPM sensor (1 pulse per revolution)
-- Current monitoring over I2C
+- Current monitoring over I2C (INA226, optional/disabled by default)
 - USB Serial Modbus RTU communication
 
 ![Basic circuit diagram](/schematic/circuit.png)
@@ -48,6 +49,19 @@ A Raspberry Pi Pico-based sensor interface project that provides real-time monit
   - `ModbusRTUSlave` - Modbus RTU communication library
 - `/include` - Header files
 - `/test` - Test files
+
+## Important Note on Current Sensing (INA226)
+
+The codebase includes support for current sensing using the INA226 over I2C. However, due to a hardware issue, all INA226-related code (initialization, runtime, and configuration) is commented out by default in `main.cpp` and `sys_init.h`.
+
+- **To enable current sensing:**
+  - Uncomment the INA226-related lines in `main.cpp` and `sys_init.h`.
+  - Ensure your hardware is working and the INA226 is connected properly.
+- **If left commented:**
+  - The rest of the system (ADC, RPM, Modbus, etc.) will function normally.
+  - No current measurements will be reported in the Modbus registers.
+
+This approach allows easy re-enabling of current sensing in the future by simply uncommenting the relevant code blocks.
 
 ## Configuration
 
@@ -79,7 +93,7 @@ The following table describes the Modbus holding registers used in this device:
 | 40003 (0x0002) | CH1_MA | FLOAT32 | Channel 1 current measurement in mA |
 | 40005 (0x0004) | CH2_MA | FLOAT32 | Channel 2 current measurement in mA |
 | 40007 (0x0006) | PULSE_RATE | FLOAT32 | Measured pulse rate in Hz |
-| 40009 (0x0008) | MOTOR_MA | FLOAT32 | Motor current measurement in mA |
+| 40009 (0x0008) | MOTOR_MA | FLOAT32 | Motor current measurement in mA (only if INA226 enabled) |
 
 Notes:
 - All FLOAT32 values use two consecutive registers (32 bits)
